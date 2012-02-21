@@ -1,0 +1,4 @@
+src/main.c
+src/filedumper.c
+src/printtext.c
+src/shmdumper.c

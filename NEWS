@@ -1,0 +1,16 @@
+This is shmcat 1.2
+
+shmcat-1.2 (2011-07-14)
+	increased buffer size for dumping files (better performance)
+	made some debug messages more verbose
+	support for systems with very large key_t data type
+
+shmcat-1.1 (2011-02-11)
+	fixed typos in some rarely seen error messages
+
+shmcat-1.0 (2010-12-01)
+	added german translation
+	made shared memory key parsing more robust
+
+shmcat-0.8 (2010-11-26)
+	initial beta release

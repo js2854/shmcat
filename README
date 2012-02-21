@@ -1,0 +1,35 @@
+shmcat - a tool to dump System V shared memory segments, files and text
+(C) 2012 by Stefan Gast <sgdev@arcor.de>
+
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+
+License: GPLv2 or later
+
+Report bugs to: sgdev@arcor.de
+
+Compile and install in the usual GNU way:
+	cd SUBDIR
+	./configure
+	make
+	su -c 'make install'
+
+To dump a shared memory segment, given by key:
+	shmcat -M KEY
+	(where KEY is some shared memory key obtained via ipcs (1))
+
+To dump a shared memory segment, given by id:
+	shmcat -m ID
+	(where ID is some shared memory ID obtained via ipcs (1))
+
+You can dump several segments and files together with one call, e.g.:
+	shmcat -m 1234 -f some_file
+
+For more information type:
+	shmcat -h
+
+If you dump shared memory segments, you would probably want to redirect the
+output of shmcat to a file or a program like od (1), because shared memory
+data is usually in a binary format and thus it may contain non-printable
+characters.

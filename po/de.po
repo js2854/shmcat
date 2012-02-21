@@ -1,0 +1,226 @@
+# German translations for shmcat package.
+# Copyright (C) 2012 Stefan Gast <sgdev@arcor.de>
+# This file is distributed under the same license as the shmcat package.
+# Stefan Gast <sgdev@arcor.de>, 2012
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: shmcat 1.0\n"
+"Report-Msgid-Bugs-To: sgdev@arcor.de\n"
+"POT-Creation-Date: 2012-02-21 01:49+0100\n"
+"PO-Revision-Date: 2012-02-21 01:49+0200\n"
+"Last-Translator: Stefan Gast <sgdev@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/main.c:49
+#, c-format
+msgid "Usage: %s [OPTION]... [OPERAND]...\n"
+msgstr "Verwendung: %s [OPTION]... [OPERAND]...\n"
+
+#: src/main.c:50
+msgid ""
+"Print files, System V shared memory objects and/or the given text\n"
+"to standard output.\n"
+msgstr ""
+"Dateien, System-V Shared-Memory-Objekte und/oder übergebenen Text\n"
+"auf der Standardausgabe ausgeben.\n"
+
+#: src/main.c:53
+msgid "Following OPTIONs are supported:\n"
+msgstr "Die folgenden OPTIONen werden unterstützt:\n"
+
+#: src/main.c:56
+msgid ""
+"-h, --help               display this help and exit.\n"
+"-?                       same as -h.\n"
+"-V, --version            output version information and exit.\n"
+msgstr ""
+"-h, --help               diesen Hilfetext anzeigen und beenden.\n"
+"-?                       das Gleiche wie -h.\n"
+"-V, --version            Versionsinformationen anzeigen und beenden.\n"
+
+#: src/main.c:60
+msgid ""
+"-h             display this help and exit.\n"
+"-?             same as -h.\n"
+"-V             output version information and exit.\n"
+msgstr ""
+"-h             diesen Hilfetext anzeigen und beenden.\n"
+"-?             das Gleiche wie -h.\n"
+"-V             Versionsinformationen anzeigen und beenden.\n"
+
+#: src/main.c:65
+msgid "An OPERAND may be one of:\n"
+msgstr "Ein OPERAND kann sein:\n"
+
+#: src/main.c:68
+msgid ""
+"-f, --file=filename      dump contents of the given file.\n"
+"-i, --stdin              dump standard input.\n"
+"-M, --shmkey=key         dump the shared memory object with the given key.\n"
+"-m, --shmid=id           dump the shared memory object with the given id.\n"
+"-n, --newline            add a line feed.\n"
+"-t, --text=text          print the given text.\n"
+msgstr ""
+"-f, --file=dateiname     den Inhalt der angegebenen Datei ausgeben.\n"
+"-i, --stdin              die Standardeingabe ausgeben.\n"
+"-M, --shmkey=schlüssel   das Shared-Memory-Objekt mit dem übergebenen\n"
+"                         Schlüssel ausgeben.\n"
+"-m, --shmid=id           das Shared-Memory-Objekt mit der übergebenen\n"
+"                         ID ausgeben.\n"
+"-n, --newline            einen Zeilenumbruch hinzufügen.\n"
+"-t, --text=text          den übergebenen Text ausgeben.\n"
+
+#: src/main.c:75
+msgid ""
+"-f filename    dump contents of the given file.\n"
+"-i             dump standard input.\n"
+"-M key         dump the shared memory object with the given key.\n"
+"-m id          dump the shared memory object with the given id.\n"
+"-n             add a line feed.\n"
+"-t text        print the given text.\n"
+msgstr ""
+"-f dateiname   den Inhalt der angegebenen Datei ausgeben.\n"
+"-i             die Standardeingabe ausgeben.\n"
+"-M schlüssel   das Shared-Memory-Objekt mit dem übergebenen               "
+"Schlüssel ausgeben.\n"
+"-m id          das Shared-Memory-Objekt mit der übergebenen\n"
+"               ID ausgeben.\n"
+"-n             einen Zeilenumbruch hinzufügen.\n"
+"-t text        den übergebenen Text ausgeben.\n"
+
+#: src/main.c:83
+msgid "If no operand is given, read standard input."
+msgstr ""
+"Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
+
+#: src/main.c:90
+msgid "Copyright (C) 2012 by Stefan Gast"
+msgstr "Copyright © 2012 by Stefan Gast"
+
+#: src/main.c:91
+msgid ""
+"This is free software.  You may redistribute copies of it under the terms "
+"of\n"
+"the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+"Dies ist freie Software. Sie dürfen Kopien davon unter den Bedingungen der\n"
+"GNU General Public License <http://www.gnu.org/licenses/gpl.html> weiter-\n"
+"verbreiten.\n"
+"Es gibt KEINERLEI GARANTIEN, so weit wie es das Gesetz erlaubt.\n"
+
+#. TRANSLATORS: The placeholder indicates the bug-reporting address
+#. for this package.  Please add _another line_ saying
+#. "Report translation bugs to <...>\n" with the address for translation
+#. bugs (typically your translation team's web or email address).
+#: src/main.c:99
+#, c-format
+msgid "Report bugs to: %s\n"
+msgstr ""
+"Melden Sie Fehler im Programm oder der deutschen Übersetzung\n"
+"an: %s\n"
+
+#: src/main.c:156 src/main.c:163
+#, c-format
+msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
+msgstr "%s: Falsche Verwendung, mehr Informationen mit „%s -h“.\n"
+
+#: src/main.c:198
+#, c-format
+msgid "%s: BUG: Unhandled command line option: %c\n"
+msgstr "%s: BUG: Nicht behandelte Kommandozeilen-Option: %c\n"
+
+#: src/main.c:223
+#, c-format
+msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
+msgstr ""
+"%s: BUG: Eine der Routinen im Programm hat einen ungültigen Wert "
+"zurückgegeben (%i)!\n"
+
+#: src/filedumper.c:50 src/printtext.c:42 src/shmdumper.c:95
+#: src/shmdumper.c:110
+#, c-format
+msgid "%s: Error writing to standard output: %s\n"
+msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"
+
+#: src/filedumper.c:62
+#, c-format
+msgid "%s: Error reading file \"%s\": %s\n"
+msgstr "%s: Fehler beim Lesen der Datei „%s“: %s\n"
+
+#: src/filedumper.c:65
+#, c-format
+msgid "%s: Error reading standard input: %s\n"
+msgstr "%s: Fehler beim Lesen von der Standardeingabe: %s\n"
+
+#: src/filedumper.c:82
+#, c-format
+msgid "%s: Cannot open file \"%s\": %s\n"
+msgstr "%s: Kann die Datei „%s“ nicht öffnen: %s\n"
+
+#: src/filedumper.c:91
+#, c-format
+msgid "%s: Error closing file \"%s\": %s\n"
+msgstr "%s: Fehler beim Schließen der Datei „%s“: %s\n"
+
+#: src/shmdumper.c:59
+#, c-format
+msgid "%s: Cannot attach the shared memory segment with the key \"%s\": %s\n"
+msgstr ""
+"%s: Kann das Shared-Memory-Segment mit dem Schlüssel „%s“ nicht einbinden: "
+"%s\n"
+
+#: src/shmdumper.c:62
+#, c-format
+msgid "%s: Cannot attach the shared memory segment with the id \"%s\": %s\n"
+msgstr ""
+"%s: Kann das Shared-Memory-Segment mit der ID „%s“ nicht einbinden: %s\n"
+
+#: src/shmdumper.c:73
+#, c-format
+msgid ""
+"%s: Cannot determine the size of the shared memory segment with the key \"%s"
+"\": %s\n"
+msgstr ""
+"%s: Kann die Größe des Shared-Memory-Segments mit dem Schlüssel „%s“ nicht "
+"ermitteln: %s\n"
+
+#: src/shmdumper.c:76
+#, c-format
+msgid ""
+"%s: Cannot determine the size of the shared memory segment with the id \"%s"
+"\": %s\n"
+msgstr ""
+"%s: Kann die Größe des Shared-Memory-Segments mit der ID „%s“ nicht "
+"ermitteln: %s\n"
+
+#: src/shmdumper.c:132 src/shmdumper.c:144
+#, c-format
+msgid "%s: Invalid shared memory key: %s\n"
+msgstr "%s: Ungültiger Shared-Memory-Schlüssel: %s\n"
+
+#: src/shmdumper.c:138
+#, c-format
+msgid ""
+"%s: \"%s\" is the key for private shared memory segments! Try passing the "
+"segment by ID instead.\n"
+msgstr ""
+"%s: „%s“ ist der Schlüssel für private Shared-Memory-Segmente! Versuchen Sie "
+"das Segment über die ID zu übergeben.\n"
+
+#: src/shmdumper.c:152
+#, c-format
+msgid "%s: Cannot open a shared memory segment with the key \"%s\": %s\n"
+msgstr ""
+"%s: Kann kein Shared-Memory-Segment mit dem Schlüssel „%s“ öffnen: %s\n"
+
+#: src/shmdumper.c:169
+#, c-format
+msgid "%s: Invalid shared memory id: %s\n"
+msgstr "%s: Ungültige Shared-Memory-ID: %s\n"
