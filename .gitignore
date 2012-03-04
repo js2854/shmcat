@@ -36,6 +36,7 @@ src/shmcat
 !po/Makevars
 !po/POTFILES.in
 !po/LINGUAS
+!po/*.pot
 !po/de.po
 
 !m4/ChangeLog
