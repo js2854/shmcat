@@ -34,6 +34,10 @@ AC_PROG_INSTALL
 
 AC_ISC_POSIX
 
+AC_ARG_ENABLE([big-buffer], AS_HELP_STRING([--disable-big-buffer], [Use a smaller buffer for file dumps (useful on memory constrained systems)]))
+AS_IF([test "x$enable_big_buffer" != "xno"],
+      AC_DEFINE([ENABLE_BIG_BUFFER], [1], [Define if shmcat should use a 2MB buffer for file dumps]))
+
 AC_CHECK_HEADERS(limits.h stdio.h stdlib.h string.h errno.h locale.h, [], [AC_MSG_ERROR(Some ANSI headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(fcntl.h unistd.h sys/types.h sys/stat.h, [], [AC_MSG_ERROR(Some POSIX headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(sys/ipc.h sys/shm.h, [], [AC_MSG_ERROR(Could not find the headers for System V Shared Memory. Aborting.)])

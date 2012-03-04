@@ -34,8 +34,13 @@
 ShmcatStatus dumpFd(int fd, const char *filename, const char *programName)
 {
 	/* Place the buffer in the data segment, so we can make it quite big.
-	 * We use a 16kB buffer at the moment. */
+	 * We use a 16kB buffer if configured with --disable-big-buffer,
+	 * otherwise we use 2MB. */
+#ifdef ENABLE_BIG_BUFFER
+	static char buffer[2*1024*1024];
+#else
 	static char buffer[16*1024];
+#endif
 
 	ssize_t bytesToDump;
 	ssize_t bytesDumped;
