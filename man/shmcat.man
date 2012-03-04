@@ -46,7 +46,7 @@ number. It can, for example, be obtained using the \fBipcs(1)\fR tool.
 \fB-n\fR, \fB--newline\fR
 Add a line feed.
 .TP
-\fB-t\fR, \fB--text=TEXT\fR
+\fB-t\fR, \fB--text=\fITEXT\fR
 Print the given text.
 .SH NOTES
 Usually, when you dump shared memory segments, you should redirect the
