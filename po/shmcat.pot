@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.2\n"
 "Report-Msgid-Bugs-To: sgdev@arcor.de\n"
-"POT-Creation-Date: 2012-02-21 01:49+0100\n"
+"POT-Creation-Date: 2012-03-04 22:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,11 +74,19 @@ msgstr ""
 msgid "If no operand is given, read standard input."
 msgstr ""
 
-#: src/main.c:90
+#: src/main.c:91
+msgid "(Compiled with big buffer)"
+msgstr ""
+
+#: src/main.c:93
+msgid "(Compiled with small buffer)"
+msgstr ""
+
+#: src/main.c:95
 msgid "Copyright (C) 2012 by Stefan Gast"
 msgstr ""
 
-#: src/main.c:91
+#: src/main.c:96
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -90,48 +98,48 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/main.c:99
+#: src/main.c:104
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 
-#: src/main.c:156 src/main.c:163
+#: src/main.c:161 src/main.c:168
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr ""
 
-#: src/main.c:198
+#: src/main.c:203
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr ""
 
-#: src/main.c:223
+#: src/main.c:228
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
 
-#: src/filedumper.c:50 src/printtext.c:42 src/shmdumper.c:95
+#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:95
 #: src/shmdumper.c:110
 #, c-format
 msgid "%s: Error writing to standard output: %s\n"
 msgstr ""
 
-#: src/filedumper.c:62
+#: src/filedumper.c:67
 #, c-format
 msgid "%s: Error reading file \"%s\": %s\n"
 msgstr ""
 
-#: src/filedumper.c:65
+#: src/filedumper.c:70
 #, c-format
 msgid "%s: Error reading standard input: %s\n"
 msgstr ""
 
-#: src/filedumper.c:82
+#: src/filedumper.c:87
 #, c-format
 msgid "%s: Cannot open file \"%s\": %s\n"
 msgstr ""
 
-#: src/filedumper.c:91
+#: src/filedumper.c:96
 #, c-format
 msgid "%s: Error closing file \"%s\": %s\n"
 msgstr ""
