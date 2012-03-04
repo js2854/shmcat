@@ -86,7 +86,12 @@ static void usage(const char *progname)
 
 static void show_version(void)
 {
-	puts(PACKAGE_STRING);
+	printf("%s ", PACKAGE_STRING);
+#ifdef ENABLE_BIG_BUFFER
+	puts(_("(Compiled with big buffer)"));
+#else
+	puts(_("(Compiled with small buffer)"));
+#endif
 	puts(_("Copyright (C) 2012 by Stefan Gast"));
 	puts(_("This is free software.  You may redistribute copies of it under the terms of\n"
                "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
