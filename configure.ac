@@ -62,4 +62,4 @@ AC_CHECK_FUNCS(puts setlocale, [], [AC_MSG_ERROR(Some ANSI functions are not ava
 AM_GNU_GETTEXT
 AM_GNU_GETTEXT_VERSION(0.17)
 
-AC_OUTPUT(Makefile intl/Makefile po/Makefile.in src/Makefile)
+AC_OUTPUT(Makefile intl/Makefile man/Makefile po/Makefile.in src/Makefile)

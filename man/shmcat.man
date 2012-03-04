@@ -1,0 +1,60 @@
+.TH SHMCAT "1" "March 2012" "shmcat(1)"
+.SH NAME
+shmcat \- dump System V shared memory segments, files, standard input and/or text
+.SH SYNOPSIS
+.B shmcat [
+.I OPTION
+.B ]... [
+.I OPERAND
+.B ]...
+.SH DESCRIPTION
+Dump System V shared memory segments, files, standard input and/or text to
+standard output. If no OPERAND is given, read standard input only. If more
+than one operand is given, dump them in order. If some of the operands
+cannot be read, shmcat prints an error message to standard error and tries
+to continue with the other OPERANDs.
+.PP
+If shmcat has been compiled without getopt_long support, only the short, one
+character OPTIONs and OPERANDs can be used. Otherwise the long ones are also
+available. When a long OPTION or OPERAND needs an argument, the short
+versions do so, as well.
+.SH OPTIONS
+.TP
+\fB-h\fR, \fB-?\fR, \fB--help\fR
+Display usage information and quit without dumping anything.
+.TP
+\fB-V\fR
+Show version information and quit without further action.
+.SH OPERANDS
+.TP
+\fB-f\fR, \fB--file=\fIFILENAME\fR
+Dump the contents of the given file.
+.TP
+\fB-i\fR, \fB--stdin\fR
+Dump standard input.
+.TP
+\fB-M\fR, \fB--shmkey=\fIKEY\fR
+Dump the shared memory object with the given key. The key can be given as a
+decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal (prefix \fB0x\fR)
+number. It can, for example, be obtained using the \fBipcs(1)\fR tool.
+.TP
+\fB-m\fR, \fB--shmid=\fIID\fR
+Dump the shared memory object with the given id. The id can be given as a
+decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal (prefix \fB0x\fR)
+number. It can, for example, be obtained using the \fBipcs(1)\fR tool.
+.TP
+\fB-n\fR, \fB--newline\fR
+Add a line feed.
+.TP
+\fB-t\fR, \fB--text=TEXT\fR
+Print the given text.
+.SH NOTES
+Usually, when you dump shared memory segments, you should redirect the
+output of shmcat to a file or a program like \fBod(1)\fR, because shared
+memory data is usually in a binary format and thus it may contain
+non-printable characters. You also probably want to suspend the processes
+accessing the shared memory object in order to get a consistent dump.
+.SH AUTHOR
+Stefan Gast
+.SH "SEE ALSO"
+.BR ipcs(1)

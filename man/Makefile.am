@@ -17,10 +17,5 @@
 
 # Makefile.am: Input file for automake
 
-SUBDIRS = intl man src po
-DIST_SUBDIRS = intl man src po
-
-ACLOCAL_AMFLAGS = -I m4
-
-EXTRA_DIST = config.rpath mkinstalldirs m4/ChangeLog
-
+man1_MANS = shmcat.man
+EXTRA_DIST = $(man1_MANS)

@@ -28,6 +28,9 @@ intl
 po/*
 m4/*
 
+man/Makefile
+man/Makefile.in
+
 src/gettext.h
 src/shmcat
 
