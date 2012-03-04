@@ -1,4 +1,9 @@
-This is shmcat 1.2
+This is shmcat 1.3
+
+shmcat-1.3 (2012-03-04)
+	further increased buffer size
+	added configure option to use smaller buffer
+	added english man page
 
 shmcat-1.2 (2011-07-14)
 	increased buffer size for dumping files (better performance)

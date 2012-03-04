@@ -19,7 +19,7 @@
 
 
 AC_PREREQ([2.65])
-AC_INIT(shmcat, 1.2, sgdev@arcor.de)
+AC_INIT(shmcat, 1.3, sgdev@arcor.de)
 AM_CONFIG_HEADER(config.h)
 AC_LANG(C)
 
