@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.0\n"
 "Report-Msgid-Bugs-To: sgdev@arcor.de\n"
-"POT-Creation-Date: 2012-02-21 01:49+0100\n"
-"PO-Revision-Date: 2012-02-21 01:49+0200\n"
+"POT-Creation-Date: 2012-03-04 22:02+0100\n"
+"PO-Revision-Date: 2012-03-04 22:25+0200\n"
 "Last-Translator: Stefan Gast <sgdev@arcor.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -99,11 +99,19 @@ msgid "If no operand is given, read standard input."
 msgstr ""
 "Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
 
-#: src/main.c:90
+#: src/main.c:91
+msgid "(Compiled with big buffer)"
+msgstr "(Kompiliert mit großem Puffer)"
+
+#: src/main.c:93
+msgid "(Compiled with small buffer)"
+msgstr "(Kompiliert mit kleinem Puffer)"
+
+#: src/main.c:95
 msgid "Copyright (C) 2012 by Stefan Gast"
 msgstr "Copyright © 2012 by Stefan Gast"
 
-#: src/main.c:91
+#: src/main.c:96
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -119,52 +127,52 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/main.c:99
+#: src/main.c:104
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 "Melden Sie Fehler im Programm oder der deutschen Übersetzung\n"
 "an: %s\n"
 
-#: src/main.c:156 src/main.c:163
+#: src/main.c:161 src/main.c:168
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr "%s: Falsche Verwendung, mehr Informationen mit „%s -h“.\n"
 
-#: src/main.c:198
+#: src/main.c:203
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr "%s: BUG: Nicht behandelte Kommandozeilen-Option: %c\n"
 
-#: src/main.c:223
+#: src/main.c:228
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
 "%s: BUG: Eine der Routinen im Programm hat einen ungültigen Wert "
 "zurückgegeben (%i)!\n"
 
-#: src/filedumper.c:50 src/printtext.c:42 src/shmdumper.c:95
+#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:95
 #: src/shmdumper.c:110
 #, c-format
 msgid "%s: Error writing to standard output: %s\n"
 msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"
 
-#: src/filedumper.c:62
+#: src/filedumper.c:67
 #, c-format
 msgid "%s: Error reading file \"%s\": %s\n"
 msgstr "%s: Fehler beim Lesen der Datei „%s“: %s\n"
 
-#: src/filedumper.c:65
+#: src/filedumper.c:70
 #, c-format
 msgid "%s: Error reading standard input: %s\n"
 msgstr "%s: Fehler beim Lesen von der Standardeingabe: %s\n"
 
-#: src/filedumper.c:82
+#: src/filedumper.c:87
 #, c-format
 msgid "%s: Cannot open file \"%s\": %s\n"
 msgstr "%s: Kann die Datei „%s“ nicht öffnen: %s\n"
 
-#: src/filedumper.c:91
+#: src/filedumper.c:96
 #, c-format
 msgid "%s: Error closing file \"%s\": %s\n"
 msgstr "%s: Fehler beim Schließen der Datei „%s“: %s\n"
