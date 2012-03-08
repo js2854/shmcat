@@ -48,6 +48,19 @@ Add a line feed.
 .TP
 \fB-t\fR, \fB--text=\fITEXT\fR
 Print the given text.
+.SH EXIT CODES
+.TP
+0
+No errors, everything requested was dumped
+.TP
+1
+There was an error while dumping at least one OPERAND, but the program continued with the other ones (if given)
+.TP
+2
+There was a fatal error, usually this means that shmcat could not write to the standard output
+.TP
+10
+Wrong usage of the program
 .SH NOTES
 Usually, when you dump shared memory segments, you should redirect the
 output of shmcat to a file or a program like \fBod(1)\fR, because shared
