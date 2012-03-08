@@ -1,5 +1,5 @@
 # shmcat: Dump System V Shared Memory Objects
-# (C) 2012 by Stefan Gast (sgdev@arcor.de)
+# (C) 2012 by Stefan Gast
 
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 
 AC_PREREQ([2.65])
-AC_INIT(shmcat, 1.3, sgdev@arcor.de)
+AC_INIT(shmcat, 1.3, sgdev at arcor dot de)
 AM_CONFIG_HEADER(config.h)
 AC_LANG(C)
 

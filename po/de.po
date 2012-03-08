@@ -1,15 +1,15 @@
 # German translations for shmcat package.
-# Copyright (C) 2012 Stefan Gast <sgdev@arcor.de>
+# Copyright (C) 2012 Stefan Gast
 # This file is distributed under the same license as the shmcat package.
-# Stefan Gast <sgdev@arcor.de>, 2012
+# Stefan Gast, 2012
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.3\n"
-"Report-Msgid-Bugs-To: sgdev@arcor.de\n"
-"POT-Creation-Date: 2012-03-04 22:47+0100\n"
+"Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
+"POT-Creation-Date: 2012-03-08 15:32+0100\n"
 "PO-Revision-Date: 2012-03-04 22:55+0100\n"
-"Last-Translator: Stefan Gast <sgdev@arcor.de>\n"
+"Last-Translator: Stefan Gast\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
