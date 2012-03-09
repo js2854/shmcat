@@ -28,8 +28,9 @@ You can dump several segments and files together with one call, e.g.:
 
 For more information type:
 	shmcat -h
+	(or see the man page)
 
 If you dump shared memory segments, you would probably want to redirect the
 output of shmcat to a file or a program like od (1), because shared memory
-data is usually in a binary format and thus it may contain non-printable
+data usually has a binary form and thus it may contain non-printable
 characters.

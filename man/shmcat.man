@@ -10,13 +10,13 @@ shmcat \- dump System V shared memory segments, files, standard input and/or tex
 .SH DESCRIPTION
 Dump System V shared memory segments, files, standard input and/or text to
 standard output. If no OPERAND is given, read standard input only. If more
-than one operand is given, dump them in order. If some of the operands
+than one OPERAND is given, dump them in order. If some of the OPERANDs
 cannot be read, shmcat prints an error message to standard error and tries
 to continue with the other OPERANDs.
 .PP
-If shmcat has been compiled without getopt_long support, only the short, one
-character OPTIONs and OPERANDs can be used. Otherwise the long ones are also
-available. When a long OPTION or OPERAND needs an argument, the short
+If shmcat has been compiled without \fBgetopt_long(3)\fR support, only the
+short, one character OPTIONs and OPERANDs can be used. Otherwise the long ones
+are also available. When a long OPTION or OPERAND needs an argument, the short
 versions do so, as well.
 .SH OPTIONS
 .TP
@@ -51,22 +51,22 @@ Print the given text.
 .SH EXIT CODES
 .TP
 0
-No errors, everything requested was dumped
+No errors, every OPERAND requested was dumped
 .TP
 1
-There was an error while dumping at least one OPERAND, but the program continued with the other ones (if given)
+There was an error while dumping at least one OPERAND, but the program continued with the other OPERANDs (if given)
 .TP
 2
-There was a fatal error, usually this means that shmcat could not write to the standard output
+There was a fatal error, usually this means that shmcat could not write to standard output
 .TP
 10
 Wrong usage of the program
 .SH NOTES
 Usually, when you dump shared memory segments, you should redirect the
 output of shmcat to a file or a program like \fBod(1)\fR, because shared
-memory data is usually in a binary format and thus it may contain
+memory data usually has a binary form and thus it may contain
 non-printable characters. You also probably want to suspend the processes
-accessing the shared memory object in order to get a consistent dump.
+writing to the shared memory object in order to get a consistent dump.
 .SH AUTHOR
 Stefan Gast
 .SH "SEE ALSO"
