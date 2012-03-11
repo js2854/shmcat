@@ -35,8 +35,7 @@ AC_PROG_INSTALL
 AC_ISC_POSIX
 
 AC_ARG_ENABLE([big-buffer], AS_HELP_STRING([--disable-big-buffer], [Use a smaller buffer for file dumps (useful on memory constrained systems)]))
-AS_IF([test "x$enable_big_buffer" != "xno"],
-      AC_DEFINE([ENABLE_BIG_BUFFER], [1], [Define if shmcat should use a 2MB buffer for file dumps]))
+AC_ARG_ENABLE([ftok], AS_HELP_STRING([--disable-ftok], [Do not build the ftok utility]))
 
 AC_CHECK_HEADERS(limits.h stdio.h stdlib.h string.h errno.h locale.h, [], [AC_MSG_ERROR(Some ANSI headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(fcntl.h unistd.h sys/types.h sys/stat.h, [], [AC_MSG_ERROR(Some POSIX headers could not be found. Aborting.)])
@@ -51,8 +50,9 @@ AC_TYPE_UINTPTR_T
 AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtoul strtoull, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
 AC_CHECK_FUNCS(close open read write, [], [AC_MSG_ERROR(Some POSIX functions could not be found. Aborting.)])
 AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some Shared Memory functions are not available. Aborting.)])
-dnl TODO: Make the ftok utility optional
-AC_CHECK_FUNCS(ftok, [], [AC_MSG_ERROR(The ftok function is not available. Aborting.)])
+AS_IF([test "x$enable_ftok" != "xno"],
+      [AC_CHECK_FUNCS(ftok, [AC_SUBST([FTOK], ['ftok${EXEEXT}'])],
+                     [AC_MSG_WARN(The ftok function is not available. Will not build the ftok utility.)])])
 
 dnl Check how the program can parse its commandline. getopt_long is the preferred way.
 AC_CHECK_FUNCS(getopt_long, [],
@@ -60,6 +60,9 @@ AC_CHECK_FUNCS(getopt_long, [],
 			    [AC_MSG_ERROR(None of the functions getopt_long or getopt found. Aborting.)])])
 
 AC_CHECK_FUNCS(puts setlocale, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
+
+AS_IF([test "x$enable_big_buffer" != "xno"],
+      AC_DEFINE([ENABLE_BIG_BUFFER], [1], [Define if shmcat should use a 2MB buffer for file dumps]))
 
 AM_GNU_GETTEXT
 AM_GNU_GETTEXT_VERSION(0.17)
