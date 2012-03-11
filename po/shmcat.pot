@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.3\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2012-03-08 15:32+0100\n"
+"POT-Creation-Date: 2012-03-11 21:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.c:49
+#: src/shmcat.c:49
 #, c-format
 msgid "Usage: %s [OPTION]... [OPERAND]...\n"
 msgstr ""
 
-#: src/main.c:50
+#: src/shmcat.c:50
 msgid ""
 "Print files, System V shared memory objects and/or the given text\n"
 "to standard output.\n"
 msgstr ""
 
-#: src/main.c:53
+#: src/shmcat.c:53 src/ftok.c:60
 msgid "Following OPTIONs are supported:\n"
 msgstr ""
 
-#: src/main.c:56
+#: src/shmcat.c:56 src/ftok.c:66
 msgid ""
 "-h, --help               display this help and exit.\n"
 "-?                       same as -h.\n"
 "-V, --version            output version information and exit.\n"
 msgstr ""
 
-#: src/main.c:60
+#: src/shmcat.c:60 src/ftok.c:73
 msgid ""
 "-h             display this help and exit.\n"
 "-?             same as -h.\n"
 "-V             output version information and exit.\n"
 msgstr ""
 
-#: src/main.c:65
+#: src/shmcat.c:65
 msgid "An OPERAND may be one of:\n"
 msgstr ""
 
-#: src/main.c:68
+#: src/shmcat.c:68
 msgid ""
 "-f, --file=filename      dump contents of the given file.\n"
 "-i, --stdin              dump standard input.\n"
@@ -60,7 +60,7 @@ msgid ""
 "-t, --text=text          print the given text.\n"
 msgstr ""
 
-#: src/main.c:75
+#: src/shmcat.c:75
 msgid ""
 "-f filename    dump contents of the given file.\n"
 "-i             dump standard input.\n"
@@ -70,23 +70,23 @@ msgid ""
 "-t text        print the given text.\n"
 msgstr ""
 
-#: src/main.c:83
+#: src/shmcat.c:83
 msgid "If no operand is given, read standard input."
 msgstr ""
 
-#: src/main.c:91
+#: src/shmcat.c:91
 msgid "(Compiled with big buffer)"
 msgstr ""
 
-#: src/main.c:93
+#: src/shmcat.c:93
 msgid "(Compiled with small buffer)"
 msgstr ""
 
-#: src/main.c:95
+#: src/shmcat.c:95 src/ftok.c:83
 msgid "Copyright (C) 2012 by Stefan Gast"
 msgstr ""
 
-#: src/main.c:96
+#: src/shmcat.c:96 src/ftok.c:84
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -98,22 +98,22 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/main.c:104
+#: src/shmcat.c:104 src/ftok.c:92
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 
-#: src/main.c:161 src/main.c:168
+#: src/shmcat.c:161 src/shmcat.c:168 src/ftok.c:98
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr ""
 
-#: src/main.c:203
+#: src/shmcat.c:203 src/ftok.c:170
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr ""
 
-#: src/main.c:228
+#: src/shmcat.c:228
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
@@ -188,4 +188,48 @@ msgstr ""
 #: src/shmdumper.c:169
 #, c-format
 msgid "%s: Invalid shared memory id: %s\n"
+msgstr ""
+
+#: src/ftok.c:55
+#, c-format
+msgid "Usage: %s [OPTION] FILENAME ID\n"
+msgstr ""
+
+#: src/ftok.c:56
+msgid ""
+"Calculate a System V interprocess communication key using the\n"
+"ftok(3) library function and print the result to\n"
+"standard output.\n"
+msgstr ""
+
+#: src/ftok.c:63
+msgid ""
+"-d, --decimal            decimal output (instead of hexadecimal).\n"
+"-o, --octal              octal output (instead of hexadecimal).\n"
+msgstr ""
+
+#: src/ftok.c:70
+msgid ""
+"-d             decimal output (instead of hexadecimal).\n"
+"-o             octal output (instead of hexadecimal).\n"
+msgstr ""
+
+#: src/ftok.c:82
+#, c-format
+msgid "%s, part of %s\n"
+msgstr ""
+
+#: src/ftok.c:191
+#, c-format
+msgid "%s: The ID has to be a number between 0 and 255!\n"
+msgstr ""
+
+#: src/ftok.c:199
+#, c-format
+msgid "%s: Cannot calculate a key for the given parameters: %s\n"
+msgstr ""
+
+#: src/ftok.c:221
+#, c-format
+msgid "%s: Cannot print to standard output: %s\n"
 msgstr ""

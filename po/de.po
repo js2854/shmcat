@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.3\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2012-03-08 15:32+0100\n"
-"PO-Revision-Date: 2012-03-04 22:55+0100\n"
+"POT-Creation-Date: 2012-03-11 21:31+0100\n"
+"PO-Revision-Date: 2012-03-11 21:44+0100\n"
 "Last-Translator: Stefan Gast\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/main.c:49
+#: src/shmcat.c:49
 #, c-format
 msgid "Usage: %s [OPTION]... [OPERAND]...\n"
 msgstr "Verwendung: %s [OPTION]... [OPERAND]...\n"
 
-#: src/main.c:50
+#: src/shmcat.c:50
 msgid ""
 "Print files, System V shared memory objects and/or the given text\n"
 "to standard output.\n"
@@ -30,11 +30,11 @@ msgstr ""
 "Dateien, System-V Shared-Memory-Objekte und/oder übergebenen Text\n"
 "auf der Standardausgabe ausgeben.\n"
 
-#: src/main.c:53
+#: src/shmcat.c:53 src/ftok.c:60
 msgid "Following OPTIONs are supported:\n"
 msgstr "Die folgenden OPTIONen werden unterstützt:\n"
 
-#: src/main.c:56
+#: src/shmcat.c:56 src/ftok.c:66
 msgid ""
 "-h, --help               display this help and exit.\n"
 "-?                       same as -h.\n"
@@ -44,7 +44,7 @@ msgstr ""
 "-?                       das Gleiche wie -h.\n"
 "-V, --version            Versionsinformationen anzeigen und beenden.\n"
 
-#: src/main.c:60
+#: src/shmcat.c:60 src/ftok.c:73
 msgid ""
 "-h             display this help and exit.\n"
 "-?             same as -h.\n"
@@ -54,11 +54,11 @@ msgstr ""
 "-?             das Gleiche wie -h.\n"
 "-V             Versionsinformationen anzeigen und beenden.\n"
 
-#: src/main.c:65
+#: src/shmcat.c:65
 msgid "An OPERAND may be one of:\n"
 msgstr "Ein OPERAND kann sein:\n"
 
-#: src/main.c:68
+#: src/shmcat.c:68
 msgid ""
 "-f, --file=filename      dump contents of the given file.\n"
 "-i, --stdin              dump standard input.\n"
@@ -76,7 +76,7 @@ msgstr ""
 "-n, --newline            einen Zeilenumbruch hinzufügen.\n"
 "-t, --text=text          den übergebenen Text ausgeben.\n"
 
-#: src/main.c:75
+#: src/shmcat.c:75
 msgid ""
 "-f filename    dump contents of the given file.\n"
 "-i             dump standard input.\n"
@@ -94,24 +94,24 @@ msgstr ""
 "-n             einen Zeilenumbruch hinzufügen.\n"
 "-t text        den übergebenen Text ausgeben.\n"
 
-#: src/main.c:83
+#: src/shmcat.c:83
 msgid "If no operand is given, read standard input."
 msgstr ""
 "Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
 
-#: src/main.c:91
+#: src/shmcat.c:91
 msgid "(Compiled with big buffer)"
 msgstr "(Kompiliert mit großem Puffer)"
 
-#: src/main.c:93
+#: src/shmcat.c:93
 msgid "(Compiled with small buffer)"
 msgstr "(Kompiliert mit kleinem Puffer)"
 
-#: src/main.c:95
+#: src/shmcat.c:95 src/ftok.c:83
 msgid "Copyright (C) 2012 by Stefan Gast"
 msgstr "Copyright © 2012 by Stefan Gast"
 
-#: src/main.c:96
+#: src/shmcat.c:96 src/ftok.c:84
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -127,24 +127,24 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/main.c:104
+#: src/shmcat.c:104 src/ftok.c:92
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 "Melden Sie Fehler im Programm oder der deutschen Übersetzung\n"
 "an: %s\n"
 
-#: src/main.c:161 src/main.c:168
+#: src/shmcat.c:161 src/shmcat.c:168 src/ftok.c:98
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr "%s: Falsche Verwendung, mehr Informationen mit „%s -h“.\n"
 
-#: src/main.c:203
+#: src/shmcat.c:203 src/ftok.c:170
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr "%s: BUG: Nicht behandelte Kommandozeilen-Option: %c\n"
 
-#: src/main.c:228
+#: src/shmcat.c:228
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
@@ -232,3 +232,55 @@ msgstr ""
 #, c-format
 msgid "%s: Invalid shared memory id: %s\n"
 msgstr "%s: Ungültige Shared-Memory-ID: %s\n"
+
+#: src/ftok.c:55
+#, c-format
+msgid "Usage: %s [OPTION] FILENAME ID\n"
+msgstr "Verwendung: %s [OPTION] DATEINAME ID\n"
+
+#: src/ftok.c:56
+msgid ""
+"Calculate a System V interprocess communication key using the\n"
+"ftok(3) library function and print the result to\n"
+"standard output.\n"
+msgstr ""
+"Berechne über die Bibliotheksfunktion ftok(3) einen System V\n"
+"Interprozesskommunikations-Schlüssel und gebe das Ergebnis auf der\n"
+"Standardausgabe aus.\n"
+
+#: src/ftok.c:63
+msgid ""
+"-d, --decimal            decimal output (instead of hexadecimal).\n"
+"-o, --octal              octal output (instead of hexadecimal).\n"
+msgstr ""
+"-d, --decimal            dezimale Ausgabe (statt hexadezimal).\n"
+"-o, --octal              oktale Ausgabe (statt hexadezimal).\n"
+
+#: src/ftok.c:70
+msgid ""
+"-d             decimal output (instead of hexadecimal).\n"
+"-o             octal output (instead of hexadecimal).\n"
+msgstr ""
+"-d             dezimale Ausgabe (statt hexadezimal).\n"
+"-o             oktale Ausgabe (statt hexadezimal).\n"
+
+#: src/ftok.c:82
+#, c-format
+msgid "%s, part of %s\n"
+msgstr "%s, Teil von %s\n"
+
+#: src/ftok.c:191
+#, c-format
+msgid "%s: The ID has to be a number between 0 and 255!\n"
+msgstr "%s: Die ID muss eine Zahl zwischen 0 und 255 sein!\n"
+
+#: src/ftok.c:199
+#, c-format
+msgid "%s: Cannot calculate a key for the given parameters: %s\n"
+msgstr ""
+"%s: Kann keinen Schlüssel für die angegebenen Parameter berechnen: %s\n"
+
+#: src/ftok.c:221
+#, c-format
+msgid "%s: Cannot print to standard output: %s\n"
+msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"
