@@ -19,7 +19,7 @@
 
 bin_PROGRAMS = shmcat
 shmcat_SOURCES = filedumper.c filedumper.h gettext.h \
-		 main.c printtext.c printtext.h \
+		 shmcat.c printtext.c printtext.h \
 		 shmdumper.c shmdumper.h status.h translate.h
 
 datadir = @datadir@

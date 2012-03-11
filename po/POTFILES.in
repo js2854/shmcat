@@ -1,4 +1,4 @@
-src/main.c
+src/shmcat.c
 src/filedumper.c
 src/printtext.c
 src/shmdumper.c
