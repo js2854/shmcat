@@ -17,10 +17,11 @@
 
 # Makefile.am: Input file for automake
 
-bin_PROGRAMS = shmcat
+bin_PROGRAMS = shmcat ftok
 shmcat_SOURCES = filedumper.c filedumper.h gettext.h \
 		 shmcat.c printtext.c printtext.h \
 		 shmdumper.c shmdumper.h status.h translate.h
+ftok_SOURCES = ftok.c gettext.h translate.h
 
 datadir = @datadir@
 localedir = $(datadir)/locale

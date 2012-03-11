@@ -51,6 +51,8 @@ AC_TYPE_UINTPTR_T
 AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtoul strtoull, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
 AC_CHECK_FUNCS(close open read write, [], [AC_MSG_ERROR(Some POSIX functions could not be found. Aborting.)])
 AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some Shared Memory functions are not available. Aborting.)])
+dnl TODO: Make the ftok utility optional
+AC_CHECK_FUNCS(ftok, [], [AC_MSG_ERROR(The ftok function is not available. Aborting.)])
 
 dnl Check how the program can parse its commandline. getopt_long is the preferred way.
 AC_CHECK_FUNCS(getopt_long, [],
