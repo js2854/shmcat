@@ -36,7 +36,8 @@ Dump standard input.
 \fB-M\fR, \fB--shmkey=\fIKEY\fR
 Dump the shared memory object with the given key. The key can be given as a
 decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal (prefix \fB0x\fR)
-number. It can, for example, be obtained using the \fBipcs(1)\fR tool.
+number. It can, for example, be obtained using the \fBipcs(1)\fR or the
+\fBftok(1)\fR tool.
 .TP
 \fB-m\fR, \fB--shmid=\fIID\fR
 Dump the shared memory object with the given id. The id can be given as a
@@ -70,4 +71,5 @@ writing to the shared memory object in order to get a consistent dump.
 .SH AUTHOR
 Stefan Gast
 .SH "SEE ALSO"
+.BR ftok(1),
 .BR ipcs(1)
