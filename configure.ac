@@ -51,8 +51,11 @@ AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtoul strtoull, [
 AC_CHECK_FUNCS(close open read write, [], [AC_MSG_ERROR(Some POSIX functions could not be found. Aborting.)])
 AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some Shared Memory functions are not available. Aborting.)])
 AS_IF([test "x$enable_ftok" != "xno"],
-      [AC_CHECK_FUNCS(ftok, [AC_SUBST([FTOK], ['ftok${EXEEXT}'])],
-                     [AC_MSG_WARN(The ftok function is not available. Will not build the ftok utility.)])])
+      [AC_CHECK_FUNCS(ftok,
+                      [AC_SUBST([FTOK], ['ftok${EXEEXT}'])
+		       AC_SUBST([FTOK_MAN], ['ftok.man'])
+		      ],
+                      [AC_MSG_WARN(The ftok function is not available. Will not build the ftok utility.)])])
 
 dnl Check how the program can parse its commandline. getopt_long is the preferred way.
 AC_CHECK_FUNCS(getopt_long, [],

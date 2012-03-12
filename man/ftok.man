@@ -1,0 +1,60 @@
+.TH FTOK "1" "March 2012" "ftok(1)"
+.SH NAME
+ftok \- calculate System V IPC keys using the \fBftok(3)\fR library function
+.SH SYNOPSIS
+.B ftok [
+.I OPTION
+.B ]
+.I FILENAME ID
+.SH DESCRIPTION
+Calculate a System V IPC key from the given FILENAME and ID using the
+\fBftok(3)\fR library function, and print the result to standard output.
+If not otherwise specified, the key is printed in hexadecimal format, with
+a \fB0x\fR prefix.
+.PP
+.TP
+\fIFILENAME\fR
+The name of an existing file. This does not have to be a regular file,
+directories and special files should work, too.
+.TP
+\fIID\fR
+A number between (including) 0 and 255.
+.PP
+If shmcat has been compiled without \fBgetopt_long(3)\fR support, only the
+short, one character OPTIONs can be used. Otherwise the long ones
+are also available.
+.SH OPTIONS
+.TP
+\fB-d\fR, \fB--decimal\fR
+Print the result in decimal format, without any prefix.
+.TP
+\fB-h\fR, \fB-?\fR, \fB--help\fR
+Display usage information and quit without further action.
+.TP
+\fB-o\fR, \fB--octal\fR
+Print the result in octal format and use a leading zero (\fB0\fR) as prefix.
+.TP
+\fB-V\fR
+Show version information and quit.
+.SH EXIT CODES
+.TP
+0
+No errors, the key could be calculated and printed
+.TP
+1
+There was an error calculating or printing the key
+.TP
+10
+Wrong usage of the program
+.SH CAVEATS
+The \fBftok(1)\fR utility has the same limitations as the \fBftok(3)\fR library
+function. That means, there is no guarantee that the resulting key is unique.
+.PP
+On Linux, passing \fB0\fR as the ID (second parameter) to the \fBftok(3)\fR
+function seems to work, but this behavior is unspecified. The \fBftok(1)\fR
+tool accepts \fB0\fR as an ID and leaves it to the library implementation on
+what to do with that.
+.SH AUTHOR
+Stefan Gast
+.SH "SEE ALSO"
+.BR ipcs(1)

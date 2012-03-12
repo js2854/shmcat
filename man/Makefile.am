@@ -17,5 +17,5 @@
 
 # Makefile.am: Input file for automake
 
-man1_MANS = shmcat.man
-EXTRA_DIST = $(man1_MANS)
+man1_MANS = shmcat.man $(FTOK_MAN)
+EXTRA_DIST = shmcat.man ftok.man
