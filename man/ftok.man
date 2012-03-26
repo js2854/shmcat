@@ -39,7 +39,7 @@ Show version information and quit.
 .SH EXIT CODES
 .TP
 0
-No errors, the key could be calculated and printed
+No errors, the key was calculated and printed
 .TP
 1
 There was an error calculating or printing the key
