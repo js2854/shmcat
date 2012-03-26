@@ -14,7 +14,7 @@ a \fB0x\fR prefix.
 .PP
 .TP
 \fIFILENAME\fR
-The name of an existing file. This does not have to be a regular file,
+The name of an existing file. This does not need to be a regular file,
 directories and special files should work, too.
 .TP
 \fIID\fR
