@@ -17,13 +17,8 @@
 
 # Makefile.am: Input file for automake
 
-MAN_TRANSLATIONS = de
-
-if USE_NLS
-SUBDIRS = $(MAN_TRANSLATIONS)
-endif
-
-DIST_SUBDIRS = $(MAN_TRANSLATIONS)
+LANG=de
+mandir = @mandir@/$(LANG)
 
 man1_MANS = shmcat.man $(FTOK_MAN)
 EXTRA_DIST = shmcat.man ftok.man
