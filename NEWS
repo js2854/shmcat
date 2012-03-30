@@ -1,9 +1,14 @@
-This is shmcat 1.3
+This is shmcat 1.4
+
+shmcat-1.4 (2012-03-30)
+	added the ftok utility to calculate IPC keys from the command line
+	translated man pages into German
+	several documentation fixes
 
 shmcat-1.3 (2012-03-04)
 	further increased buffer size
 	added configure option to use smaller buffer
-	added english man page
+	added English man page
 
 shmcat-1.2 (2011-07-14)
 	increased buffer size for dumping files (better performance)
@@ -14,7 +19,7 @@ shmcat-1.1 (2011-02-11)
 	fixed typos in some rarely seen error messages
 
 shmcat-1.0 (2010-12-01)
-	added german translation
+	added German translation
 	made shared memory key parsing more robust
 
 shmcat-0.8 (2010-11-26)
