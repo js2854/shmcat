@@ -17,6 +17,9 @@
 
 # Makefile.am: Input file for automake
 
+AM_CPPFLAGS = -I$(top_srcdir)/intl
+LDADD = @LIBINTL@
+
 bin_PROGRAMS = shmcat $(FTOK)
 EXTRA_PROGRAMS = ftok
 
