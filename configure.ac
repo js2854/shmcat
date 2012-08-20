@@ -62,8 +62,6 @@ AC_CHECK_FUNCS(getopt_long, [],
 			    [AC_CHECK_FUNC(getopt, [],
 			    [AC_MSG_ERROR(None of the functions getopt_long or getopt found. Aborting.)])])
 
-AC_CHECK_FUNCS(puts setlocale, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
-
 AS_IF([test "x$enable_big_buffer" != "xno"],
       AC_DEFINE([ENABLE_BIG_BUFFER], [1], [Define if shmcat should use a 2MB buffer for file dumps]))
 
