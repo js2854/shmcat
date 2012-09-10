@@ -37,6 +37,11 @@ complete list), for example:
 	
 	--diable-ftok	Do not build the ftok utility.
 
+If you want to install shmcat on FreeBSD, you probably want to configure with:
+	--manpath=/usr/local/man
+Otherwise the man pages will be installed (by default) to /usr/local/share/man,
+which is not in the default manpath of FreeBSD.
+
 ===============================================================================
 
 Examples:
