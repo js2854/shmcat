@@ -175,7 +175,7 @@ int main(int argc, char **argv)
 	/* The help and version options cause the program to quit in the
 	 * getopt loop, so now we can do the real work, but we need
 	 * the two arguments FILENAME and ID now. */
-	if(optind + 2 > argc)
+	if(optind + 2 != argc)
 	{
 		wrong_usage(argv[0]);
 		return EXITCODE_USAGE;
