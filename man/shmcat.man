@@ -1,4 +1,4 @@
-.TH SHMCAT "1" "March 2012" "shmcat(1)"
+.TH SHMCAT "1" "September 2012" "shmcat(1)"
 .SH NAME
 shmcat \- dump System V shared memory segments, files, standard input and/or text
 .SH SYNOPSIS
@@ -23,7 +23,7 @@ versions do so, as well.
 \fB-h\fR, \fB-?\fR, \fB--help\fR
 Display usage information and quit without dumping anything.
 .TP
-\fB-V\fR
+\fB-V\fR, \fB--version\fR
 Show version information and quit without further action.
 .SH OPERANDS
 .TP

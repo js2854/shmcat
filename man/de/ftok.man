@@ -1,4 +1,4 @@
-.TH FTOK "1" "März 2012" "ftok(1)"
+.TH FTOK "1" "September 2012" "ftok(1)"
 .SH NAME
 ftok \- System V Interprozesskommunikationsschlüssel durch die Bibliotheksfunktion \fBftok(3)\fR berechnen
 .SH ÜBERSICHT
@@ -38,7 +38,7 @@ beeenden.
 Das Ergebnis in oktaler Form mit einer führenden Null (\fB0\fR) als Präfix
 ausgeben.
 .TP
-\fB-V\fR
+\fB-V\fR, \fB--version\fR
 Versionsinformationen anzeigen und beenden.
 .SH RÜCKGABEWERTE
 .TP

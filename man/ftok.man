@@ -1,4 +1,4 @@
-.TH FTOK "1" "March 2012" "ftok(1)"
+.TH FTOK "1" "September 2012" "ftok(1)"
 .SH NAME
 ftok \- calculate System V IPC keys using the \fBftok(3)\fR library function
 .SH SYNOPSIS
@@ -34,7 +34,7 @@ Display usage information and quit without further action.
 \fB-o\fR, \fB--octal\fR
 Print the result in octal format and use a leading zero (\fB0\fR) as prefix.
 .TP
-\fB-V\fR
+\fB-V\fR, \fB--version\fR
 Show version information and quit.
 .SH EXIT CODES
 .TP

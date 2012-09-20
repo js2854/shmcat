@@ -1,4 +1,4 @@
-.TH SHMCAT "1" "März 2012" "shmcat(1)"
+.TH SHMCAT "1" "September 2012" "shmcat(1)"
 .SH NAME
 shmcat \- System V Shared-Memory-Segmente, Dateien, Standardeingabe und/oder Text ausgeben
 .SH ÜBERSICHT
@@ -26,7 +26,7 @@ benötigt, so gilt das auch für die kurzen Varianten.
 Informationen zur Verwendung des Programms anzeigen und ohne weitere
 Ausgaben beenden.
 .TP
-\fB-V\fR
+\fB-V\fR, \fB--version\fR
 Versionsinformationen anzeigen und ohne weitere Aktionen beenden.
 .SH OPERANDEN
 .TP
