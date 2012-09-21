@@ -35,9 +35,9 @@ complete list), for example:
 			available, so you probably want to use this option if
 			you are not a German speaker.
 	
-	--diable-ftok	Do not build the ftok utility.
+	--disable-ftok	Do not build the ftok utility.
 
-If you want to install shmcat on FreeBSD, you probably want to configure with:
+If are going to install shmcat on FreeBSD, you probably want to configure with:
 	--manpath=/usr/local/man
 Otherwise the man pages will be installed (by default) to /usr/local/share/man,
 which is not in the default manpath of FreeBSD.
@@ -63,11 +63,12 @@ Of course, you can also use command substitution and the ftok tool for the
 key, e.g.:
 	shmcat -M `ftok SOME_FILE 65` > FILENAME
 
-For more information see the man pages for shmcat (1) and ftok (1), or type:
+For more information, please see the man pages for shmcat (1) and ftok (1),
+or type:
 	shmcat -h
 	ftok -h
 
-As seen above, if you dump shared memory segments, you would probably want to
-redirect the output of shmcat to a file or a program like od (1), because
-shared memory data usually has a binary form and thus it may contain
-non-printable characters.
+As seen above, if you dump shared memory segments, you should redirect the
+output of shmcat to a file or a program like od (1), because shared memory
+data usually has a binary form and thus it may contain non-printable
+characters.
