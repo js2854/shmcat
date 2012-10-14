@@ -1,64 +1,64 @@
-.TH FTOK "1" "September 2012" "ftok(1)"
+.TH FTOK "1" "Oktober 2012" "ftok(1)"
 .SH NAME
-ftok \- System V Interprozesskommunikationsschlüssel durch die Bibliotheksfunktion \fBftok(3)\fR berechnen
-.SH ÜBERSICHT
+ftok \- System V Interprozesskommunikationsschl\(:ussel durch die Bibliotheksfunktion \fBftok(3)\fR berechnen
+.SH \(:UBERSICHT
 .B ftok [
 .I OPTION
 .B ]
 .I DATEINAME ID
 .SH BESCHREIBUNG
-Einen System V Interprozesskommunikationsschlüssel aus dem angegebenen
+Einen System V Interprozesskommunikationsschl\(:ussel aus dem angegebenen
 DATEINAMEn und der ID durch die Bibliotheksfunktion \fBftok(3)\fR berechnen
-und das Ergebnis an die Standardausgabe übermitteln. Wurde nichts
-gegenteiliges angegeben, so wird der Schlüssel in hexadezimaler Form
-ausgegeben, wobei ihm das Präfix \fB0x\fR voran gestellt wird.
+und das Ergebnis an die Standardausgabe \(:ubermitteln. Wurde nichts
+gegenteiliges angegeben, so wird der Schl\(:ussel in hexadezimaler Form
+ausgegeben, wobei ihm das Pr\(:afix \fB0x\fR voran gestellt wird.
 .PP
 .TP
 \fIDATEINAME\fR
 Der Name einer existierenden Datei. Dabei muss es sich nicht unbedingt
-um eine reguläre Datei handeln. Mit Verzeichnissen oder Spezialdateien
+um eine regul\(:are Datei handeln. Mit Verzeichnissen oder Spezialdateien
 sollte es auch funktionieren.
 .TP
 \fIID\fR
 Eine Zahl zwischen 0 und 255, jeweils inklusive.
 .PP
-Wenn shmcat ohne Unterstützung für \fBgetopt_long(3)\fR kompiliert wurde,
-dann können nur die kurzen, aus einem Buchstaben bestehenden OPTIONen
-verwendet werden. Ansonsten werden auch die langen Varianten unterstützt.
+Wenn shmcat ohne Unterst\(:utzung f\(:ur \fBgetopt_long(3)\fR kompiliert wurde,
+dann k\(:onnen nur die kurzen, aus einem Buchstaben bestehenden OPTIONen
+verwendet werden. Ansonsten werden auch die langen Varianten unterst\(:utzt.
 .SH OPTIONEN
 .TP
 \fB-d\fR, \fB--decimal\fR
-Das Ergebnis in dezimaler Form, ohne Präfix ausgeben.
+Das Ergebnis in dezimaler Form, ohne Pr\(:afix ausgeben.
 .TP
 \fB-h\fR, \fB-?\fR, \fB--help\fR
 Informationen zur Verwendung des Programms anzeigen und ohne weitere Aktionen
 beeenden.
 .TP
 \fB-o\fR, \fB--octal\fR
-Das Ergebnis in oktaler Form mit einer führenden Null (\fB0\fR) als Präfix
+Das Ergebnis in oktaler Form mit einer f\(:uhrenden Null (\fB0\fR) als Pr\(:afix
 ausgeben.
 .TP
 \fB-V\fR, \fB--version\fR
 Versionsinformationen anzeigen und beenden.
-.SH RÜCKGABEWERTE
+.SH R\(:UCKGABEWERTE
 .TP
 0
-Kein Fehler, der Schlüssel konnte berechnet und ausgegeben werden
+Kein Fehler, der Schl\(:ussel konnte berechnet und ausgegeben werden
 .TP
 1
-Beim Berechnen oder Ausgeben des Schlüssels ist ein Fehler aufgetreten
+Beim Berechnen oder Ausgeben des Schl\(:ussels ist ein Fehler aufgetreten
 .TP
 10
 Das Programm wurde falsch aufgerufen
 .SH PROBLEME
-Das Kommando \fBftok(1)\fR hat die gleichen Beschränkungen wie die
-Bibliotheksfunktion \fBftok(3)\fR. Das bedeutet, dass es keine Garantie dafür
-gibt, dass der berechnete Schlüssel eindeutig ist.
+Das Kommando \fBftok(1)\fR hat die gleichen Beschr\(:ankungen wie die
+Bibliotheksfunktion \fBftok(3)\fR. Das bedeutet, dass es keine Garantie daf\(:ur
+gibt, dass der berechnete Schl\(:ussel eindeutig ist.
 .PP
-Unter Linux scheint es möglich zu sein, \fB0\fR als ID (zweiter Parameter) an
-die Funktion \fBftok(3)\fR zu übergeben, aber dieses Verhalten ist nicht
+Unter Linux scheint es m\(:oglich zu sein, \fB0\fR als ID (zweiter Parameter) an
+die Funktion \fBftok(3)\fR zu \(:ubergeben, aber dieses Verhalten ist nicht
 spezifiziert. Das Kommando \fBftok(1)\fR akzeptiert \fB0\fR als ID und
-überlässt es der Bibliotheksimplementierung, was damit zu tun ist.
+\(:uberl\(:asst es der Bibliotheksimplementierung, was damit zu tun ist.
 .SH AUTHOR
 Stefan Gast
 .SH "SIEHE AUCH"
