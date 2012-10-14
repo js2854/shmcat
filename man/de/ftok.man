@@ -59,7 +59,7 @@ Unter Linux scheint es m\(:oglich zu sein, \fB0\fR als ID (zweiter Parameter) an
 die Funktion \fBftok(3)\fR zu \(:ubergeben, aber dieses Verhalten ist nicht
 spezifiziert. Das Kommando \fBftok(1)\fR akzeptiert \fB0\fR als ID und
 \(:uberl\(:asst es der Bibliotheksimplementierung, was damit zu tun ist.
-.SH AUTHOR
+.SH AUTOR
 Stefan Gast
 .SH "SIEHE AUCH"
 .BR ipcs(1),
