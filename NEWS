@@ -1,4 +1,9 @@
-This is shmcat 1.4
+This is shmcat 1.5
+
+shmcat-1.5 (2012-10-14)
+	initial, official FreeBSD support
+	ftok checks the command line more strictly
+	documentation and build system fixes
 
 shmcat-1.4 (2012-03-30)
 	added the ftok utility to calculate IPC keys from the command line
