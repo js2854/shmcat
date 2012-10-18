@@ -41,13 +41,49 @@
 #include "translate.h"
 
 
+static ShmcatStatus dumpMem(const char *start, const char *stop, const char *programName)
+{
+	const char *pos = start;
+	ssize_t bytesWritten;
+
+	/* If we have a huge memory area, we have to be careful
+	 * with the size we pass to write. Otherwise the ssize_t
+	 * might overflow. So we do the huge chunks first with
+	 * this special loop. */
+	while((uintptr_t)stop-(uintptr_t)pos > (uintptr_t)SSIZE_MAX)
+	{
+		bytesWritten = write(STDOUT_FILENO, pos, SSIZE_MAX);
+		if(bytesWritten <= 0)
+		{
+			fprintf(stderr, _("%s: Error writing to standard output: %s\n"),
+					programName, strerror(errno));
+			return SHMCAT_PANIC;
+		}
+		else
+			pos += bytesWritten;
+	}
+
+	/* Now dump the rest. */
+	while(pos != stop)
+	{
+		bytesWritten = write(STDOUT_FILENO, pos, stop-pos);
+		if(bytesWritten <= 0)
+		{
+			fprintf(stderr, _("%s: Error writing to standard output: %s\n"),
+					programName, strerror(errno));
+			return SHMCAT_PANIC;
+		}
+		else
+			pos += bytesWritten;
+	}
+}
+
+
 static ShmcatStatus dumpShm(int id, int byKey, const char *param, const char *programName)
 {
 	struct shmid_ds infoBuffer;
 	const char *shm;
-	const char *shmpos;
-	const char *shmend;
-	int bytesWritten;
+	ShmcatStatus status;
 
 	/* Put the segment into our address space. We do this even before
 	 * we query its size, to make sure the segment does not disappear
@@ -78,45 +114,11 @@ static ShmcatStatus dumpShm(int id, int byKey, const char *param, const char *pr
 		return SHMCAT_ERROR;
 	}
 
-	/* Set position and end pointer. */
-	shmpos = shm;
-	shmend = shm + infoBuffer.shm_segsz;
-
-	/* If we have a huge shared memory segment, we have to be
-	 * careful with the size we pass to write. Otherwise the ssize_t
-	 * might overflow. So we do the huge chunks first with
-	 * this special loop. */
-	while((uintptr_t)shmend-(uintptr_t)shmpos > (uintptr_t)SSIZE_MAX)
-	{
-		bytesWritten = write(STDOUT_FILENO, shmpos, SSIZE_MAX);
-		if(bytesWritten <= 0)
-		{
-			shmdt(shm);
-			fprintf(stderr, _("%s: Error writing to standard output: %s\n"),
-					programName, strerror(errno));
-			return SHMCAT_PANIC;
-		}
-		else
-			shmpos += bytesWritten;
-	}
-
-	/* Now dump the rest. */
-	while(shmpos != shmend)
-	{
-		bytesWritten = write(STDOUT_FILENO, shmpos, shmend-shmpos);
-		if(bytesWritten <= 0)
-		{
-			shmdt(shm);
-			fprintf(stderr, _("%s: Error writing to standard output: %s\n"),
-					programName, strerror(errno));
-			return SHMCAT_PANIC;
-		}
-		else
-			shmpos += bytesWritten;
-	}
+	/* Dump memory and save status */
+	status = dumpMem(shm, shm + infoBuffer.shm_segsz, programName);
 
 	shmdt(shm);
-	return SHMCAT_OK;
+	return status;
 }
 
 
