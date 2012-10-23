@@ -103,14 +103,14 @@ static ShmcatStatus dumpShm(int id, int byKey, const char *param, const char *pr
 	/* Now we need to know how big our segment is. */
 	if(shmctl(id, IPC_STAT, &infoBuffer) == -1)
 	{
-		shmdt(shm);
-
 		if(byKey)
 			fprintf(stderr, _("%s: Cannot determine the size of the shared memory segment with the key \"%s\": %s\n"),
 					programName, param, strerror(errno));
 		else
 			fprintf(stderr, _("%s: Cannot determine the size of the shared memory segment with the id \"%s\": %s\n"),
 					programName, param, strerror(errno));
+
+		shmdt(shm);
 		return SHMCAT_ERROR;
 	}
 
