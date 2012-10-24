@@ -76,6 +76,9 @@ static ShmcatStatus dumpMem(const char *start, const char *stop, const char *pro
 		else
 			pos += bytesWritten;
 	}
+
+	/* If we reach this, everything worked fine. */
+	return SHMCAT_OK;
 }
 
 
