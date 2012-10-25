@@ -22,10 +22,13 @@
 #ifndef SHMCAT_SHMDUMPER_H
 #define SHMCAT_SHMDUMPER_H
 
+#include "config.h"
 #include "status.h"
 
 ShmcatStatus dumpShmKey(const char *keystr, const char *programName);
 ShmcatStatus dumpShmId(const char *idstr, const char *programName);
-
+#ifdef ENABLE_POSIX_SHM
+ShmcatStatus dumpPosixShm(const char *shmName, const char *programName);
 #endif
 
+#endif

@@ -36,12 +36,15 @@ AC_ISC_POSIX
 
 AC_ARG_ENABLE([big-buffer], AS_HELP_STRING([--disable-big-buffer], [Use a smaller buffer for file dumps (useful on memory constrained systems)]))
 AC_ARG_ENABLE([ftok], AS_HELP_STRING([--disable-ftok], [Do not build the ftok utility]))
+AC_ARG_ENABLE([posix-shm], AS_HELP_STRING([--disable-posix-shm], [Disable POSIX shared memory support (shm_open and friends)]))
 
 AC_CHECK_HEADERS(limits.h stdio.h stdlib.h string.h errno.h locale.h, [], [AC_MSG_ERROR(Some ANSI headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(fcntl.h unistd.h sys/types.h sys/stat.h, [], [AC_MSG_ERROR(Some POSIX headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(sys/ipc.h sys/shm.h, [], [AC_MSG_ERROR(Could not find the headers for System V Shared Memory. Aborting.)])
 AC_CHECK_HEADERS(inttypes.h stdint.h)
 AC_CHECK_HEADERS(getopt.h)
+AS_IF([test "x$enable_posix-shm" != "xno"],
+      [AC_CHECK_HEADERS(sys/mman.h, [], [AC_MSG_WARN(Header sys/mman.h not found. POSIX shared memory support will not be available.)])])
 
 AC_TYPE_SIZE_T
 AC_TYPE_SSIZE_T
@@ -49,7 +52,30 @@ AC_TYPE_UINTPTR_T
 
 AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtoul strtoull, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
 AC_CHECK_FUNCS(close open read write, [], [AC_MSG_ERROR(Some POSIX functions could not be found. Aborting.)])
-AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some Shared Memory functions are not available. Aborting.)])
+AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some System V Shared Memory functions are not available. Aborting.)])
+dnl POSIX shared memory tests
+AS_IF([test "x$enable_posix-shm" != "xno"],
+      [AC_CHECK_FUNC(shm_open,
+                     [shmcat_have_shm_open="yes"],
+		     [AC_CHECK_LIB(rt, shm_open,
+		                   [shmcat_have_shm_open="yes"
+				    shmcat_shm_open_libs='-lrt'
+				   ],
+				   AC_MSG_WARN(Function shm_open not found. POSIX shared memory support will not be available.)
+				  )
+		     ]
+		    )
+       AC_CHECK_FUNC(mmap,
+		     [shmcat_have_mmap="yes"],
+		     [AC_MSG_WARN(Function mmap not found. POSIX shared memory support will not be available.)]
+		    )
+       AC_CHECK_FUNC(fstat,
+		     [shmcat_have_fstat="yes"],
+		     [AC_MSG_WARN(Function fstat not found. POSIX shared memory support will not be available.)]
+		    )
+      ]
+     )
+
 AS_IF([test "x$enable_ftok" != "xno"],
       [AC_CHECK_FUNCS(ftok,
                       [AC_SUBST([FTOK], ['ftok${EXEEXT}'])
@@ -64,6 +90,11 @@ AC_CHECK_FUNCS(getopt_long, [],
 
 AS_IF([test "x$enable_big_buffer" != "xno"],
       AC_DEFINE([ENABLE_BIG_BUFFER], [1], [Define if shmcat should use a 2MB buffer for file dumps]))
+
+AS_IF([test "x$enable_posix_shm" != "xno" -a "x$ac_cv_header_sys_mman_h" == "xyes" -a "x$shmcat_have_shm_open" == "xyes" -a "x$shmcat_have_mmap" == "xyes" -a "x$shmcat_have_fstat" == "xyes"],
+      AC_DEFINE([ENABLE_POSIX_SHM], [1], [Define if the system supports POSIX shared memory and you want support for it in shmcat])
+      AC_SUBST([SHMCAT_EXTRA_LIBS], $shmcat_shm_open_libs)
+     )
 
 AM_GNU_GETTEXT
 AM_GNU_GETTEXT_VERSION(0.17)

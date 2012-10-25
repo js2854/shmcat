@@ -56,11 +56,11 @@ static void usage(const char *progname)
 	puts(_("-h, --help               display this help and exit.\n"
 	       "-?                       same as -h.\n"
 	       "-V, --version            output version information and exit.\n"));
-#else
+#else /* !HAVE_GETOPT_LONG */
 	puts(_("-h             display this help and exit.\n"
 	       "-?             same as -h.\n"
 	       "-V             output version information and exit.\n"));
-#endif
+#endif /* HAVE_GETOPT_LONG */
 
 	puts(_("An OPERAND may be one of:\n"));
 
@@ -69,16 +69,24 @@ static void usage(const char *progname)
 	       "-i, --stdin              dump standard input.\n"
 	       "-M, --shmkey=key         dump the shared memory object with the given key.\n"
 	       "-m, --shmid=id           dump the shared memory object with the given id.\n"
-	       "-n, --newline            add a line feed.\n"
-	       "-t, --text=text          print the given text.\n"));
-#else
+	       "-n, --newline            add a line feed."));
+#ifdef ENABLE_POSIX_SHM
+	puts(_("-p, --posix-shm=name     dump the POSIX shared memory object with the\n"
+	       "                         given name."));
+#endif /* ENABLE_POSIX_SHM */
+	puts(_("-t, --text=text          print the given text.\n"));
+
+#else /* !HAVE_GETOPT_LONG */
 	puts(_("-f filename    dump contents of the given file.\n"
 	       "-i             dump standard input.\n"
 	       "-M key         dump the shared memory object with the given key.\n"
 	       "-m id          dump the shared memory object with the given id.\n"
-	       "-n             add a line feed.\n"
-	       "-t text        print the given text.\n"));
-#endif
+	       "-n             add a line feed."));
+#ifdef ENABLE_POSIX_SHM
+	puts(_("-p name        dump the POSIX shared memory object with the given name."));
+#endif /* ENABLE_POSIX_SHM */
+	puts(_("-t text        print the given text.\n"));
+#endif /* HAVE_GETOPT_LONG */
 
 	puts(_("If no operand is given, read standard input."));
 }
@@ -107,7 +115,11 @@ static void show_version(void)
 
 int main(int argc, char **argv)
 {
+#ifdef ENABLE_POSIX_SHM
+	const char *optstr = "hVf:iM:m:np:t:";
+#else
 	const char *optstr = "hVf:iM:m:nt:";
+#endif
 #if defined HAVE_GETOPT_LONG && defined HAVE_GETOPT_H
 	static const struct option long_options[] =
 	{
@@ -118,6 +130,9 @@ int main(int argc, char **argv)
 		{ "shmkey", required_argument, NULL, 'M' },
 		{ "shmid", required_argument, NULL, 'm' },
 		{ "newline", no_argument, NULL, 'n' },
+#ifdef ENABLE_POSIX_SHM
+		{ "posix-shm", required_argument, NULL, 'p' },
+#endif
 		{ "text", required_argument, NULL, 't' }
 	};
 #endif
@@ -194,6 +209,11 @@ int main(int argc, char **argv)
 			case 'n':
 				dumperStatus = printText("\n", argv[0]);
 				break;
+#ifdef ENABLE_POSIX_SHM
+			case 'p':
+				dumperStatus = dumpPosixShm(optarg, argv[0]);
+				break;
+#endif
 			case 't':
 				dumperStatus = printText(optarg, argv[0]);
 				break;

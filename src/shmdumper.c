@@ -25,10 +25,15 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <limits.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include <unistd.h>
+#ifdef ENABLE_POSIX_SHM
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#endif
 
 #ifdef HAVE_INTTYPES_H
 #include <inttypes.h>
@@ -178,3 +183,49 @@ ShmcatStatus dumpShmId(const char *idstr, const char *programName)
 
 	return dumpShm((int)id, 0, idstr, programName);
 }
+
+
+#ifdef ENABLE_POSIX_SHM
+ShmcatStatus dumpPosixShm(const char *shmName, const char *programName)
+{
+	int fd;
+	struct stat infoBuffer;
+	char *shm;
+	ShmcatStatus status;
+
+	/* Open POSIX shared memory object. */
+	if((fd = shm_open(shmName, O_RDONLY, (mode_t)0)) == -1)
+	{
+		fprintf(stderr, _("%s: Cannot open the shared memory segment with the name \"%s\": %s\n"),
+				programName, shmName, strerror(errno));
+		return SHMCAT_ERROR;
+	}
+
+	/* Get the size of it. */
+	if(fstat(fd, &infoBuffer) == -1)
+	{
+		fprintf(stderr,
+			_("%s: Cannot determine the size of the shared memory segment with the name \"%s\": %s\n"),
+			programName, shmName, strerror(errno));
+		close(fd);
+		return SHMCAT_ERROR;
+	}
+
+	/* Map it into our address space. */
+	shm = mmap(NULL, (size_t)infoBuffer.st_size, PROT_READ, MAP_SHARED, fd, (off_t)0);
+	if((void *)shm == MAP_FAILED)
+	{
+		fprintf(stderr, _("%s: Cannot attach the shared memory segment with the name \"%s\": %s\n"),
+				programName, shmName, strerror(errno));
+		close(fd);
+		return SHMCAT_ERROR;
+	}
+
+	/* Dump memory and save status */
+	status = dumpMem(shm, shm + infoBuffer.st_size, programName);
+
+	munmap(shm, (size_t)infoBuffer.st_size);
+	close(fd);
+	return status;
+}
+#endif /* ENABLE_POSIX_SHM */

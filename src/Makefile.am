@@ -26,6 +26,8 @@ EXTRA_PROGRAMS = ftok
 shmcat_SOURCES = filedumper.c filedumper.h gettext.h \
 		 shmcat.c printtext.c printtext.h \
 		 shmdumper.c shmdumper.h status.h translate.h
+shmcat_LDADD = @SHMCAT_EXTRA_LIBS@ @LIBINTL@
+
 ftok_SOURCES = ftok.c gettext.h translate.h
 
 datadir = @datadir@
