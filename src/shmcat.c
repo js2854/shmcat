@@ -47,7 +47,7 @@ enum
 static void usage(const char *progname)
 {
 	printf(_("Usage: %s [OPTION]... [OPERAND]...\n"), progname);
-	puts(_("Print files, System V shared memory objects and/or the given text\n"
+	puts(_("Print files, shared memory segments and/or the given text\n"
 	       "to standard output.\n"));
 
 	puts(_("Following OPTIONs are supported:\n"));
@@ -67,11 +67,13 @@ static void usage(const char *progname)
 #ifdef HAVE_GETOPT_LONG
 	puts(_("-f, --file=filename      dump contents of the given file.\n"
 	       "-i, --stdin              dump standard input.\n"
-	       "-M, --shmkey=key         dump the shared memory object with the given key.\n"
-	       "-m, --shmid=id           dump the shared memory object with the given id.\n"
+	       "-M, --shmkey=key         dump the System V shared memory segment with the\n"
+	       "                         given key.\n"
+	       "-m, --shmid=id           dump the System V shared memory segment with the\n"
+	       "                         given id.\n"
 	       "-n, --newline            add a line feed."));
 #ifdef ENABLE_POSIX_SHM
-	puts(_("-p, --posix-shm=name     dump the POSIX shared memory object with the\n"
+	puts(_("-p, --posix-shm=name     dump the POSIX shared memory segment with the\n"
 	       "                         given name."));
 #endif /* ENABLE_POSIX_SHM */
 	puts(_("-t, --text=text          print the given text.\n"));
@@ -79,11 +81,11 @@ static void usage(const char *progname)
 #else /* !HAVE_GETOPT_LONG */
 	puts(_("-f filename    dump contents of the given file.\n"
 	       "-i             dump standard input.\n"
-	       "-M key         dump the shared memory object with the given key.\n"
-	       "-m id          dump the shared memory object with the given id.\n"
+	       "-M key         dump the System V shared memory segment with the given key.\n"
+	       "-m id          dump the System V shared memory segment with the given id.\n"
 	       "-n             add a line feed."));
 #ifdef ENABLE_POSIX_SHM
-	puts(_("-p name        dump the POSIX shared memory object with the given name."));
+	puts(_("-p name        dump the POSIX shared memory segment with the given name."));
 #endif /* ENABLE_POSIX_SHM */
 	puts(_("-t text        print the given text.\n"));
 #endif /* HAVE_GETOPT_LONG */
