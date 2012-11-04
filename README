@@ -1,4 +1,4 @@
-shmcat - a tool to dump System V shared memory segments, files and text
+shmcat - a tool to dump shared memory segments, files and text
 (C) 2012 by Stefan Gast
 
 This is free software.  You may redistribute copies of it under the terms of
@@ -13,9 +13,10 @@ Report bugs to: sgdev at arcor dot de
 
 Description:
 
-shmcat is a tool to dump System V shared memory segments, files standard input
-and/or text passed via the command line to standard output. The program can
-dump several objects in sequence, similar to the cat (1) command.
+shmcat is a tool to dump shared memory segments (System V and/or POSIX), files,
+standard input and/or text passed via the command line to standard output.
+The program can dump several objects in sequence, similar to the cat (1)
+command.
 The package comes with an optional utility called ftok that acts as a wrapper
 to the library function of the same name.
 
@@ -37,6 +38,12 @@ complete list), for example:
 	
 	--disable-ftok	Do not build the ftok utility.
 
+	--disable-posix-shm
+			Disable POSIX shared memory support (shm_open
+			and friends). Support for the (older) System V
+			shared memory API (shmget, shmat...) will still
+			be included.
+
 If are going to install shmcat on FreeBSD, you probably want to configure with:
 	--manpath=/usr/local/man
 Otherwise the man pages will be installed (by default) to /usr/local/share/man,
@@ -46,15 +53,20 @@ which is not in the default manpath of FreeBSD.
 
 Examples:
 
-To dump a shared memory segment, given by key:
+To dump a System V shared memory segment, given by key:
 	shmcat -M KEY > FILENAME
 	(where KEY is some shared memory key obtained via ipcs (1) or ftok (1),
 	and FILENAME is the file to write the content to)
 
-To dump a shared memory segment, given by id:
+To dump a System V shared memory segment, given by id:
 	shmcat -m ID > FILENAME
 	(where ID is some shared memory ID obtained via ipcs (1), and FILENAME
 	is the name of the file to write the content to)
+
+To dump a POSIX shared memory segment:
+	shmcat -m /SHMNAME > FILENAME
+	(where /SHMNAME is the name of the desired POSIX shared memory segment,
+	and FILENAME is the file to write the content to)
 
 You can dump several segments and files together with one call, e.g.:
 	shmcat -m ID -f SOME_FILE > FILENAME
