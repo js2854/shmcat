@@ -1,6 +1,6 @@
-.TH SHMCAT "1" "September 2012" "shmcat(1)"
+.TH SHMCAT "1" "November 2012" "shmcat(1)"
 .SH NAME
-shmcat \- dump System V shared memory segments, files, standard input and/or text
+shmcat \- dump shared memory segments, files, standard input and/or text
 .SH SYNOPSIS
 .B shmcat [
 .I OPTION
@@ -8,11 +8,23 @@ shmcat \- dump System V shared memory segments, files, standard input and/or tex
 .I OPERAND
 .B ]...
 .SH DESCRIPTION
-Dump System V shared memory segments, files, standard input and/or text to
-standard output. If no OPERAND is given, read standard input only. If more
+Dump shared memory segments, files, standard input and/or text to standard
+output. If no OPERAND is given, read standard input only. If more
 than one OPERAND is given, dump them in order. If some of the OPERANDs
 cannot be read, shmcat prints an error message to standard error and tries
 to continue with the other OPERANDs.
+.PP
+Most modern systems support two APIs for shared memory:
+.PP
+The older one is commonly known as the System V API. It uses numeric keys
+and IDs as identifiers and consists of system calls like \fBshmget(2)\fR,
+\fBshmat(2)\fR and \fBshmdt(2)\fR.
+.PP
+The newer API is called the POSIX shared memory API. It uses names in string
+form as identifiers. It treats shared memory similar to files, which are
+opened with \fBshm_open(3)\fR and then mapped into the program address space
+via \fBmmap(2)\fR. Please note that POSIX shared memory is not supported by all
+versions of shmcat.
 .PP
 If shmcat has been compiled without \fBgetopt_long(3)\fR support, only the
 short, one character OPTIONs and OPERANDs can be used. Otherwise the long ones
@@ -34,18 +46,23 @@ Dump the contents of the given file.
 Dump standard input.
 .TP
 \fB-M\fR, \fB--shmkey=\fIKEY\fR
-Dump the shared memory object with the given key. The key can be given as a
-decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal (prefix \fB0x\fR)
-number. It can, for example, be obtained using the \fBipcs(1)\fR or the
-\fBftok(1)\fR tool.
+Dump the System V shared memory segment with the given key. The key can be
+given as a decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal
+(prefix \fB0x\fR) number. It can, for example, be obtained using the
+\fBipcs(1)\fR or the \fBftok(1)\fR tool.
 .TP
 \fB-m\fR, \fB--shmid=\fIID\fR
-Dump the shared memory object with the given id. The id can be given as a
-decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal (prefix \fB0x\fR)
-number. It can, for example, be obtained using the \fBipcs(1)\fR tool.
+Dump the System V shared memory segment with the given id. The id can be
+given as a decimal (no prefix), octal (prefix \fB0\fR), or hexadecimal
+(prefix \fB0x\fR) number. It can, for example, be obtained using the
+\fBipcs(1)\fR tool.
 .TP
 \fB-n\fR, \fB--newline\fR
 Add a line feed.
+.TP
+\fB-p\fR, \fB--posix-shm=\fINAME\fR
+Dump the POSIX shared memory segment with the given name (not supported in
+all installations).
 .TP
 \fB-t\fR, \fB--text=\fITEXT\fR
 Print the given text.
@@ -72,4 +89,7 @@ writing to the shared memory object in order to get a consistent dump.
 Stefan Gast
 .SH "SEE ALSO"
 .BR ftok(1),
-.BR ipcs(1)
+.BR ipcs(1),
+.BR shmat(2),
+.BR shmget(2),
+.BR shm_open(3)
