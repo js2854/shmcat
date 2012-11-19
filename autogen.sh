@@ -25,7 +25,20 @@ test -z "$srcdir" && srcdir=.
 
 cd "$srcdir"
 
-cp /usr/share/gettext/gettext.h src/gettext.h
+# Where we expect gettext.h, the list is checked in the order given
+GETTEXT_H_CANDIDATES="/usr/share/gettext/gettext.h
+		      /usr/local/share/gettext/gettext.h"
+for i in $GETTEXT_H_CANDIDATES
+do
+	cp "$i" src/gettext.h && break
+done
+
+if [ ! -f src/gettext.h ]
+then
+	echo "No usable gettext.h found, please install the gettext"
+	echo "development packages!"
+	exit 1
+fi
 
 autopoint || exit 1
 aclocal -I m4 || exit 1
