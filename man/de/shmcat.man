@@ -1,6 +1,6 @@
-.TH SHMCAT "1" "Oktober 2012" "shmcat(1)"
+.TH SHMCAT "1" "November 2012" "shmcat(1)"
 .SH NAME
-shmcat \- System V Shared-Memory-Segmente, Dateien, Standardeingabe und/oder Text ausgeben
+shmcat \- Shared-Memory-Segmente, Dateien, Standardeingabe und/oder Text ausgeben
 .SH \(:UBERSICHT
 .B shmcat [
 .I OPTION
@@ -8,12 +8,25 @@ shmcat \- System V Shared-Memory-Segmente, Dateien, Standardeingabe und/oder Tex
 .I OPERAND
 .B ]...
 .SH BESCHREIBUNG
-System V Shared-Memory-Segmente, Dateien, die Standardeingabe und/oder Text
-auf der Standardausgabe ausgeben. Wenn kein OPERAND angegeben wurde, wird nur
+Shared-Memory-Segmente, Dateien, die Standardeingabe und/oder Text auf der
+Standardausgabe ausgeben. Wenn kein OPERAND angegeben wurde, wird nur
 die Standardeingabe gelesen. Falls mehrere OPERANDen \(:ubergeben wurden, so
 werden diese in der angegebenen Reihenfolge verarbeitet. Wenn einige der
 OPERANDen nicht gelesen werden k\(:onnen, dann wird eine Fehlermeldung auf die
 Standardfehlerausgabe geschrieben und mit den anderen OPERANDen fortgefahren.
+.PP
+Die meisten modernen Systeme unterst\(:utzen zwei APIs f\(:ur Shared-Memory:
+.PP
+Die \(:altere wird \(:ublicherweise als die System V API bezeichnet. Sie
+verwendet numerische Schl\(:ussel und IDs als Bezeichner. Diese API besteht aus
+Systemaufrufen wie \fBshmget(2)\fR, \fBshmat(2)\fR und \fBshmdt(2)\fR.
+.PP
+Die neuere API ist die POSIX Shared Memory API. Sie verwendet Namen in
+Zeichenkettenform als Bezeichner. Sie behandelt Shared Memory \(:ahnlich wie
+Dateien, die mittels \fBshm_open(3)\fR ge\(:offnet und dann \(:uber
+\fBmmap(2)\fR in den Adressraum des aufrufenden Programms eingebunden werden.
+Bitte beachten Sie, dass POSIX Shared Memory nicht von allen Versionen von
+shmcat unterst\(:utzt wird.
 .PP
 Wenn shmcat ohne Unterst\(:utzung f\(:ur \fBgetopt_long(3)\fR kompiliert wurde,
 dann k\(:onnen nur die kurzen, aus einem Buchstaben bestehenden OPTIONen und
@@ -37,20 +50,25 @@ Den Inhalt der angegebenen Datei ausgeben.
 Die Standardeingabe ausgeben.
 .TP
 \fB-M\fR, \fB--shmkey=\fISCHL\(:USSEL\fR
-Das Shared-Memory-Objekt mit dem \(:ubergebenen Schl\(:ussel ausgeben. Der
-Schl\(:ussel kann als Dezimalzahl (ohne Pr\(:afix), Oktalzahl (mit einer \fB0\fR
-als Pr\(:afix) oder Hexadezimalzahl (mit \fB0x\fR als Pr\(:afix) \(:ubergeben
-werden. Man kann den Schl\(:ussel beispielsweise \(:uber eines der Programme
-\fBipcs(1)\fR oder \fBftok(1)\fR erhalten.
+Das System-V-Shared-Memory-Segment mit dem \(:ubergebenen Schl\(:ussel ausgeben.
+Der Schl\(:ussel kann als Dezimalzahl (ohne Pr\(:afix), Oktalzahl (mit einer
+\fB0\fR als Pr\(:afix) oder Hexadezimalzahl (mit \fB0x\fR als Pr\(:afix)
+\(:ubergeben werden. Man kann den Schl\(:ussel beispielsweise \(:uber eines
+der Programme \fBipcs(1)\fR oder \fBftok(1)\fR erhalten.
 .TP
 \fB-m\fR, \fB--shmid=\fIID\fR
-Das Shared-Memory-Objekt mit der \(:ubergebenen ID ausgeben. Die ID kann als
-Dezimalzahl (ohne Pr\(:afix), Oktalzahl (mit einer \fB0\fR als Pr\(:afix) oder
-Hexadezimalzahl (mit \fB0x\fR als Pr\(:afix) \(:ubergeben werden. Man kann die
-ID beispielsweise \(:uber das Kommando \fBipcs(1)\fR erhalten.
+Das System-V-Shared-Memory-Segment mit der \(:ubergebenen ID ausgeben. Die ID
+kann als Dezimalzahl (ohne Pr\(:afix), Oktalzahl (mit einer \fB0\fR als
+Pr\(:afix) oder Hexadezimalzahl (mit \fB0x\fR als Pr\(:afix) \(:ubergeben
+werden. Man kann die ID beispielsweise \(:uber das Kommando \fBipcs(1)\fR
+erhalten.
 .TP
 \fB-n\fR, \fB--newline\fR
 Einen Zeilenumbruch hinzuf\(:ugen.
+.TP
+\fB-p\fR, \fB--posix-shm=\fINAME\fR
+Das POSIX-Shared-Memory-Segment mit dem angegebenen Namen ausgeben (nicht von
+allen Installationen unterst\(:utzt).
 .TP
 \fB-t\fR, \fB--text=\fITEXT\fR
 Den angegebenen Text ausgeben.
@@ -60,7 +78,7 @@ Den angegebenen Text ausgeben.
 Kein Fehler, jeder gew\(:unschte OPERAND wurde ausgegeben
 .TP
 1
-Mindestens ein OPERAND konnte nicht ausgegeben werden, aber das Programm konnte mit den anderen OPERANDen (falls angegeben) fortfahren
+Es gab einen Fehler bei der Ausgabe von mindestens einem OPERANDen, aber das Programm konnte mit den anderen OPERANDen (falls angegeben) fortfahren
 .TP
 2
 Es gab einen schwerwiegenden Fehler. Normalerweise bedeutet das, dass shmcat nicht auf die Standardausgabe schreiben konnte
@@ -78,4 +96,7 @@ schreiben, um einen konsistenten Speicherabzug zu erhalten.
 Stefan Gast
 .SH "SIEHE AUCH"
 .BR ftok(1),
-.BR ipcs(1)
+.BR ipcs(1),
+.BR shmat(2),
+.BR shmget(2),
+.BR shm_open(3)
