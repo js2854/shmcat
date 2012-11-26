@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: shmcat 1.5\n"
+"Project-Id-Version: shmcat 1.6\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2012-10-14 22:39+0200\n"
-"PO-Revision-Date: 2012-10-14 22:45+0200\n"
+"POT-Creation-Date: 2012-11-26 13:56+0100\n"
+"PO-Revision-Date: 2012-11-26 13:57+0100\n"
 "Last-Translator: Stefan Gast\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -24,17 +24,17 @@ msgstr "Verwendung: %s [OPTION]... [OPERAND]...\n"
 
 #: src/shmcat.c:50
 msgid ""
-"Print files, System V shared memory objects and/or the given text\n"
+"Print files, shared memory segments and/or the given text\n"
 "to standard output.\n"
 msgstr ""
-"Dateien, System-V Shared-Memory-Objekte und/oder übergebenen Text\n"
+"Dateien, Shared-Memory-Segmente und/oder übergebenen Text\n"
 "auf der Standardausgabe ausgeben.\n"
 
-#: src/shmcat.c:53 src/ftok.c:60
+#: src/shmcat.c:53 src/ftok.c:63
 msgid "Following OPTIONs are supported:\n"
 msgstr "Die folgenden OPTIONen werden unterstützt:\n"
 
-#: src/shmcat.c:56 src/ftok.c:66
+#: src/shmcat.c:56 src/ftok.c:69
 msgid ""
 "-h, --help               display this help and exit.\n"
 "-?                       same as -h.\n"
@@ -44,7 +44,7 @@ msgstr ""
 "-?                       das Gleiche wie -h.\n"
 "-V, --version            Versionsinformationen anzeigen und beenden.\n"
 
-#: src/shmcat.c:60 src/ftok.c:73
+#: src/shmcat.c:60 src/ftok.c:76
 msgid ""
 "-h             display this help and exit.\n"
 "-?             same as -h.\n"
@@ -62,56 +62,69 @@ msgstr "Ein OPERAND kann sein:\n"
 msgid ""
 "-f, --file=filename      dump contents of the given file.\n"
 "-i, --stdin              dump standard input.\n"
-"-M, --shmkey=key         dump the shared memory object with the given key.\n"
-"-m, --shmid=id           dump the shared memory object with the given id.\n"
-"-n, --newline            add a line feed.\n"
-"-t, --text=text          print the given text.\n"
+"-M, --shmkey=key         dump the System V shared memory segment with the\n"
+"                         given key.\n"
+"-m, --shmid=id           dump the System V shared memory segment with the\n"
+"                         given id.\n"
+"-n, --newline            add a line feed."
 msgstr ""
 "-f, --file=dateiname     den Inhalt der angegebenen Datei ausgeben.\n"
 "-i, --stdin              die Standardeingabe ausgeben.\n"
-"-M, --shmkey=schlüssel   das Shared-Memory-Objekt mit dem übergebenen\n"
-"                         Schlüssel ausgeben.\n"
-"-m, --shmid=id           das Shared-Memory-Objekt mit der übergebenen\n"
-"                         ID ausgeben.\n"
-"-n, --newline            einen Zeilenumbruch hinzufügen.\n"
-"-t, --text=text          den übergebenen Text ausgeben.\n"
+"-M, --shmkey=schlüssel   das System-V-Shared-Memory-Segment mit dem\n"
+"                         übergebenen Schlüssel ausgeben.\n"
+"-m, --shmid=id           das System-V-Shared-Memory-Segment mit der\n"
+"                         übergebenen ID ausgeben.\n"
+"-n, --newline            einen Zeilenumbruch hinzufügen."
 
-#: src/shmcat.c:75
+#: src/shmcat.c:76
+msgid ""
+"-p, --posix-shm=name     dump the POSIX shared memory segment with the\n"
+"                         given name."
+msgstr ""
+"-p, --posix-shm=name     das POSIX-Shared-Memory-Segment mit dem\n"
+"                         angegebenen Namen ausgeben."
+
+#: src/shmcat.c:79
+msgid "-t, --text=text          print the given text.\n"
+msgstr "-t, --text=text          den übergebenen Text ausgeben.\n"
+
+#: src/shmcat.c:82
 msgid ""
 "-f filename    dump contents of the given file.\n"
 "-i             dump standard input.\n"
-"-M key         dump the shared memory object with the given key.\n"
-"-m id          dump the shared memory object with the given id.\n"
-"-n             add a line feed.\n"
-"-t text        print the given text.\n"
+"-M key         dump the System V shared memory segment with the given key.\n"
+"-m id          dump the System V shared memory segment with the given id.\n"
+"-n             add a line feed."
 msgstr ""
 "-f dateiname   den Inhalt der angegebenen Datei ausgeben.\n"
 "-i             die Standardeingabe ausgeben.\n"
-"-M schlüssel   das Shared-Memory-Objekt mit dem übergebenen               "
-"Schlüssel ausgeben.\n"
-"-m id          das Shared-Memory-Objekt mit der übergebenen\n"
+"-M schlüssel   das System-V-Shared-Memory-Segment mit dem übergebenen\n"
+"               Schlüssel ausgeben.\n"
+"-m id          das System-V-Shared-Memory-Segment mit der übergebenen\n"
 "               ID ausgeben.\n"
-"-n             einen Zeilenumbruch hinzufügen.\n"
-"-t text        den übergebenen Text ausgeben.\n"
+"-n             einen Zeilenumbruch hinzufügen."
 
-#: src/shmcat.c:83
+#: src/shmcat.c:88
+msgid ""
+"-p name        dump the POSIX shared memory segment with the given name."
+msgstr ""
+"-p name        das POSIX-Shared-Memory-Segment mit dem angegebenen Namen\n"
+"               ausgeben."
+
+#: src/shmcat.c:90
+msgid "-t text        print the given text.\n"
+msgstr "-t text        den übergebenen Text ausgeben.\n"
+
+#: src/shmcat.c:93
 msgid "If no operand is given, read standard input."
 msgstr ""
 "Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
 
-#: src/shmcat.c:91
-msgid "(Compiled with big buffer)"
-msgstr "(Kompiliert mit großem Puffer)"
-
-#: src/shmcat.c:93
-msgid "(Compiled with small buffer)"
-msgstr "(Kompiliert mit kleinem Puffer)"
-
-#: src/shmcat.c:95 src/ftok.c:83
+#: src/shmcat.c:110 src/ftok.c:86
 msgid "Copyright (C) 2012 by Stefan Gast"
 msgstr "Copyright © 2012 by Stefan Gast"
 
-#: src/shmcat.c:96 src/ftok.c:84
+#: src/shmcat.c:111 src/ftok.c:87
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -127,32 +140,32 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/shmcat.c:104 src/ftok.c:92
+#: src/shmcat.c:119 src/ftok.c:95
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 "Melden Sie Fehler im Programm oder der deutschen Übersetzung\n"
 "an: %s\n"
 
-#: src/shmcat.c:161 src/shmcat.c:168 src/ftok.c:98
+#: src/shmcat.c:183 src/shmcat.c:190 src/ftok.c:101
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr "%s: Falsche Verwendung, mehr Informationen mit „%s -h“.\n"
 
-#: src/shmcat.c:203 src/ftok.c:170
+#: src/shmcat.c:230 src/ftok.c:173
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr "%s: BUG: Nicht behandelte Kommandozeilen-Option: %c\n"
 
-#: src/shmcat.c:228
+#: src/shmcat.c:255
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
 "%s: BUG: Eine der Routinen im Programm hat einen ungültigen Wert "
 "zurückgegeben (%i)!\n"
 
-#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:95
-#: src/shmdumper.c:110
+#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:58
+#: src/shmdumper.c:72
 #, c-format
 msgid "%s: Error writing to standard output: %s\n"
 msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"
@@ -177,20 +190,20 @@ msgstr "%s: Kann die Datei „%s“ nicht öffnen: %s\n"
 msgid "%s: Error closing file \"%s\": %s\n"
 msgstr "%s: Fehler beim Schließen der Datei „%s“: %s\n"
 
-#: src/shmdumper.c:59
+#: src/shmdumper.c:98
 #, c-format
 msgid "%s: Cannot attach the shared memory segment with the key \"%s\": %s\n"
 msgstr ""
 "%s: Kann das Shared-Memory-Segment mit dem Schlüssel „%s“ nicht einbinden: "
 "%s\n"
 
-#: src/shmdumper.c:62
+#: src/shmdumper.c:101
 #, c-format
 msgid "%s: Cannot attach the shared memory segment with the id \"%s\": %s\n"
 msgstr ""
 "%s: Kann das Shared-Memory-Segment mit der ID „%s“ nicht einbinden: %s\n"
 
-#: src/shmdumper.c:73
+#: src/shmdumper.c:110
 #, c-format
 msgid ""
 "%s: Cannot determine the size of the shared memory segment with the key \"%s"
@@ -199,7 +212,7 @@ msgstr ""
 "%s: Kann die Größe des Shared-Memory-Segments mit dem Schlüssel „%s“ nicht "
 "ermitteln: %s\n"
 
-#: src/shmdumper.c:76
+#: src/shmdumper.c:113
 #, c-format
 msgid ""
 "%s: Cannot determine the size of the shared memory segment with the id \"%s"
@@ -208,12 +221,12 @@ msgstr ""
 "%s: Kann die Größe des Shared-Memory-Segments mit der ID „%s“ nicht "
 "ermitteln: %s\n"
 
-#: src/shmdumper.c:132 src/shmdumper.c:144
+#: src/shmdumper.c:145
 #, c-format
 msgid "%s: Invalid shared memory key: %s\n"
 msgstr "%s: Ungültiger Shared-Memory-Schlüssel: %s\n"
 
-#: src/shmdumper.c:138
+#: src/shmdumper.c:153
 #, c-format
 msgid ""
 "%s: \"%s\" is the key for private shared memory segments! Try passing the "
@@ -222,23 +235,44 @@ msgstr ""
 "%s: „%s“ ist der Schlüssel für private Shared-Memory-Segmente! Versuchen Sie "
 "das Segment über die ID zu übergeben.\n"
 
-#: src/shmdumper.c:152
+#: src/shmdumper.c:161
 #, c-format
 msgid "%s: Cannot open a shared memory segment with the key \"%s\": %s\n"
 msgstr ""
 "%s: Kann kein Shared-Memory-Segment mit dem Schlüssel „%s“ öffnen: %s\n"
 
-#: src/shmdumper.c:169
+#: src/shmdumper.c:185
 #, c-format
 msgid "%s: Invalid shared memory id: %s\n"
 msgstr "%s: Ungültige Shared-Memory-ID: %s\n"
 
-#: src/ftok.c:55
+#: src/shmdumper.c:205
+#, c-format
+msgid "%s: Cannot open the shared memory segment with the name \"%s\": %s\n"
+msgstr ""
+"%s: Kann das Shared-Memory-Segment mit dem Schlüssel „%s“ nicht öffnen: %s\n"
+
+#: src/shmdumper.c:214
+#, c-format
+msgid ""
+"%s: Cannot determine the size of the shared memory segment with the name \"%s"
+"\": %s\n"
+msgstr ""
+"%s: Kann die Größe des Shared-Memory-Segments mit dem Name „%s“ nicht "
+"ermitteln: %s\n"
+
+#: src/shmdumper.c:224
+#, c-format
+msgid "%s: Cannot attach the shared memory segment with the name \"%s\": %s\n"
+msgstr ""
+"%s: Kann das Shared-Memory-Segment mit dem Name „%s“ nicht einbinden: %s\n"
+
+#: src/ftok.c:58
 #, c-format
 msgid "Usage: %s [OPTION] FILENAME ID\n"
 msgstr "Verwendung: %s [OPTION] DATEINAME ID\n"
 
-#: src/ftok.c:56
+#: src/ftok.c:59
 msgid ""
 "Calculate a System V interprocess communication key using the\n"
 "ftok(3) library function and print the result to\n"
@@ -248,7 +282,7 @@ msgstr ""
 "Interprozesskommunikations-Schlüssel und gebe das Ergebnis auf der\n"
 "Standardausgabe aus.\n"
 
-#: src/ftok.c:63
+#: src/ftok.c:66
 msgid ""
 "-d, --decimal            decimal output (instead of hexadecimal).\n"
 "-o, --octal              octal output (instead of hexadecimal).\n"
@@ -256,7 +290,7 @@ msgstr ""
 "-d, --decimal            dezimale Ausgabe (statt hexadezimal).\n"
 "-o, --octal              oktale Ausgabe (statt hexadezimal).\n"
 
-#: src/ftok.c:70
+#: src/ftok.c:73
 msgid ""
 "-d             decimal output (instead of hexadecimal).\n"
 "-o             octal output (instead of hexadecimal).\n"
@@ -264,23 +298,23 @@ msgstr ""
 "-d             dezimale Ausgabe (statt hexadezimal).\n"
 "-o             oktale Ausgabe (statt hexadezimal).\n"
 
-#: src/ftok.c:82
+#: src/ftok.c:85
 #, c-format
 msgid "%s, part of %s\n"
 msgstr "%s, Teil von %s\n"
 
-#: src/ftok.c:191
+#: src/ftok.c:195
 #, c-format
 msgid "%s: The ID has to be a number between 0 and 255!\n"
 msgstr "%s: Die ID muss eine Zahl zwischen 0 und 255 sein!\n"
 
-#: src/ftok.c:199
+#: src/ftok.c:203
 #, c-format
 msgid "%s: Cannot calculate a key for the given parameters: %s\n"
 msgstr ""
 "%s: Kann keinen Schlüssel für die angegebenen Parameter berechnen: %s\n"
 
-#: src/ftok.c:221
+#: src/ftok.c:228
 #, c-format
 msgid "%s: Cannot print to standard output: %s\n"
 msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"
