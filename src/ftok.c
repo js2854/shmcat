@@ -20,12 +20,14 @@
  */
 
 #include "config.h"
+#include "keythelper.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <unistd.h>
 #include <errno.h>
+#include <inttypes.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 
@@ -115,7 +117,7 @@ int main(int argc, char **argv)
 #endif
 	int opt;
 
-	unsigned long id;
+	long id;
 	char *endptr;
 
 	OutputFormat format = OUTPUT_HEXADECIMAL;
@@ -186,15 +188,16 @@ int main(int argc, char **argv)
 	 * the man page of ftok says the behavior is unspecified in this case.
 	 * But on Linux this works as well, so we just assume the user knows
 	 * what he is doing in this case. */
-	id = strtoul(argv[optind+1], &endptr, 0);
-	if(*endptr != '\0' || id > 255)
+	errno = 0;
+	id = strtol(argv[optind+1], &endptr, 0);
+	if(*endptr != '\0' || id < 0L || id > 255L || errno != 0)
 	{
 		fprintf(stderr, _("%s: The ID has to be a number between 0 and 255!\n"), argv[0]);
 		return EXITCODE_USAGE;
 	}
 
 	/* Now try to get the key from the parameters. */
-	key = ftok(argv[optind], id);
+	key = ftok(argv[optind], (int)id);
 	if(key == (key_t)-1)
 	{
 		fprintf(stderr, _("%s: Cannot calculate a key for the given parameters: %s\n"),
@@ -206,15 +209,18 @@ int main(int argc, char **argv)
 	switch(format)
 	{
 		case OUTPUT_HEXADECIMAL:
-			printfResult = printf("0x%llx\n", (unsigned long long)key);
+			/* Convert to matching unsigned type first for hexadecimal output */
+			printfResult = printf("0x%jx\n", (uintmax_t)(KEY_T_UNSIGNED)key);
 			break;
 
 		case OUTPUT_DECIMAL:
-			printfResult = printf("%llu\n", (unsigned long long)key);
+			/* Decimal can be signed */
+			printfResult = printf("%ji\n", (intmax_t)key);
 			break;
 
 		case OUTPUT_OCTAL:
-			printfResult = printf("0%llo\n", (unsigned long long)key);
+			/* Convert to matching unsigned type first for octal output */
+			printfResult = printf("0%jo\n", (uintmax_t)(KEY_T_UNSIGNED)key);
 			break;
 	}
 	if(printfResult <= 0)

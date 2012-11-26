@@ -39,9 +39,9 @@ AC_ARG_ENABLE([ftok], AS_HELP_STRING([--disable-ftok], [Do not build the ftok ut
 AC_ARG_ENABLE([posix-shm], AS_HELP_STRING([--disable-posix-shm], [Disable POSIX shared memory support (shm_open and friends)]))
 
 AC_CHECK_HEADERS(limits.h stdio.h stdlib.h string.h errno.h locale.h, [], [AC_MSG_ERROR(Some ANSI headers could not be found. Aborting.)])
+AC_CHECK_HEADERS(inttypes.h, [], [AC_MSG_ERROR(Could not find the header inttypes.h. Aborting.)])
 AC_CHECK_HEADERS(fcntl.h unistd.h sys/types.h sys/stat.h, [], [AC_MSG_ERROR(Some POSIX headers could not be found. Aborting.)])
 AC_CHECK_HEADERS(sys/ipc.h sys/shm.h, [], [AC_MSG_ERROR(Could not find the headers for System V Shared Memory. Aborting.)])
-AC_CHECK_HEADERS(inttypes.h stdint.h)
 AC_CHECK_HEADERS(getopt.h)
 AS_IF([test "x$enable_posix-shm" != "xno"],
       [AC_CHECK_HEADERS(sys/mman.h, [], [AC_MSG_WARN(Header sys/mman.h not found. POSIX shared memory support will not be available.)])])
@@ -49,8 +49,17 @@ AS_IF([test "x$enable_posix-shm" != "xno"],
 AC_TYPE_SIZE_T
 AC_TYPE_SSIZE_T
 AC_TYPE_UINTPTR_T
+AC_TYPE_INTMAX_T
+AC_TYPE_UINTMAX_T
 
-AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtoul strtoull, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
+AC_CHECK_SIZEOF(key_t)
+AC_CHECK_SIZEOF(short)
+AC_CHECK_SIZEOF(int)
+AC_CHECK_SIZEOF(long)
+AC_CHECK_SIZEOF(long long)
+
+AC_CHECK_FUNCS(fprintf printf puts setlocale strerror strlen strtol, [], [AC_MSG_ERROR(Some ANSI functions are not available. Aborting.)])
+AC_CHECK_FUNCS(strtoimax strtoumax, [], [AC_MSG_ERROR(Function strtoimax/strtoumax not found. Aborting.)])
 AC_CHECK_FUNCS(close open read write, [], [AC_MSG_ERROR(Some POSIX functions could not be found. Aborting.)])
 AC_CHECK_FUNCS(shmget shmat shmctl shmdt, [], [AC_MSG_ERROR(Some System V Shared Memory functions are not available. Aborting.)])
 dnl POSIX shared memory tests

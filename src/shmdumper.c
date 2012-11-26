@@ -20,9 +20,11 @@
  */
 
 #include "config.h"
+#include "keythelper.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include <errno.h>
 #include <limits.h>
 #include <unistd.h>
@@ -33,13 +35,6 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#endif
-
-#ifdef HAVE_INTTYPES_H
-#include <inttypes.h>
-#endif
-#ifdef HAVE_STDINT_H
-#include <stdint.h>
 #endif
 
 #include "shmdumper.h"
@@ -133,30 +128,34 @@ static ShmcatStatus dumpShm(int id, int byKey, const char *param, const char *pr
 ShmcatStatus dumpShmKey(const char *keystr, const char *programName)
 {
 	char *numEnd;
-	unsigned long long key;
+	intmax_t key_signed;
+	uintmax_t key_unsigned;
 	int id;
 
-	key = strtoull(keystr, &numEnd, 0);
-	if(*numEnd != '\0')
+	/* Try to interpret the keystr as a signed value first */
+	errno = 0;
+	key_signed = strtoimax(keystr, &numEnd, 0);
+	if(*numEnd != '\0' || key_signed < KEY_T_MIN || key_signed > KEY_T_MAX || errno != 0)
 	{
-		fprintf(stderr, _("%s: Invalid shared memory key: %s\n"),
-				programName, keystr);
-		return SHMCAT_ERROR;
+		/* Failed? Then try unsigned, but ensure it is not to large for the unsigned key type */
+		errno = 0;
+		key_unsigned = strtoumax(keystr, &numEnd, 0);
+		if(*numEnd != '\0' || key_unsigned > KEY_T_UNSIGNED_MAX || errno != 0)
+		{
+			fprintf(stderr, _("%s: Invalid shared memory key: %s\n"),
+					programName, keystr);
+			return SHMCAT_ERROR;
+		}
+		key_signed = (intmax_t)key_unsigned;
 	}
-	if(key == (unsigned long long)IPC_PRIVATE)
+	if(key_signed == (intmax_t)IPC_PRIVATE)
 	{
 		fprintf(stderr, _("%s: \"%s\" is the key for private shared memory segments! Try passing the segment by ID instead.\n"),
 				programName, keystr);
 		return SHMCAT_ERROR;
 	}
-	if((unsigned long long)(key_t)key != key)	/* simple overflow detection */
-	{
-		fprintf(stderr, _("%s: Invalid shared memory key: %s\n"),
-				programName, keystr);
-		return SHMCAT_ERROR;
-	}
 
-	id = shmget((key_t)key, 0, 0);
+	id = shmget((key_t)key_signed, 0, 0);
 	if(id == -1)
 	{
 		fprintf(stderr, _("%s: Cannot open a shared memory segment with the key \"%s\": %s\n"),
@@ -171,10 +170,17 @@ ShmcatStatus dumpShmKey(const char *keystr, const char *programName)
 ShmcatStatus dumpShmId(const char *idstr, const char *programName)
 {
 	char *numEnd;
-	unsigned long id;
+	long id;
 
-	id = strtoul(idstr, &numEnd, 0);
-	if(*numEnd != '\0' || id > (unsigned long)(INT_MAX))
+	errno = 0;
+	id = strtol(idstr, &numEnd, 0);
+	/* POSIX man page shmget: "Upon successful completion, shmget() shall return a _non-negative_
+	 * integer." So we check:
+	 * a) if everything could be converted,
+	 * b) if the value is non-negative,
+	 * c) if the value fits into an integer, and
+	 * d) if the conversion did not fail otherwise. */
+	if(*numEnd != '\0' || id < 0 || id > INT_MAX || errno != 0)
 	{
 		fprintf(stderr, _("%s: Invalid shared memory id: %s\n"),
 				programName, idstr);
