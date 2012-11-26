@@ -64,7 +64,7 @@ To dump a System V shared memory segment, given by id:
 	is the name of the file to write the content to)
 
 To dump a POSIX shared memory segment:
-	shmcat -m /SHMNAME > FILENAME
+	shmcat -p /SHMNAME > FILENAME
 	(where /SHMNAME is the name of the desired POSIX shared memory segment,
 	and FILENAME is the file to write the content to)
 
