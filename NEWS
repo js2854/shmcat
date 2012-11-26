@@ -1,4 +1,12 @@
-This is shmcat 1.5
+This is shmcat 1.6
+
+shmcat-1.6 (2012-11-26)
+	fixed ftok printing the wrong keys with IDs > 127
+	fixed shmcat not liking some keys
+	POSIX shared memory support
+	improved output of shmcat compile options
+	fixed error messages in some rarely seen cases
+	documentation fixes
 
 shmcat-1.5 (2012-10-14)
 	initial, official FreeBSD support
