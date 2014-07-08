@@ -106,7 +106,7 @@ AS_IF([test "x$enable_posix_shm" != "xno" -a "x$ac_cv_header_sys_mman_h" == "xye
      )
 
 AM_GNU_GETTEXT
-AM_GNU_GETTEXT_VERSION(0.17)
+AM_GNU_GETTEXT_VERSION(0.18.3)
 
 dnl Define USE_NLS conditional to determine if we have to install translated man pages.
 AM_CONDITIONAL(USE_NLS, [test "x$USE_NLS" = "xyes"])
