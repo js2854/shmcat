@@ -140,7 +140,8 @@ int main(int argc, char **argv)
 #ifdef ENABLE_POSIX_SHM
 		{ "posix-shm", required_argument, NULL, 'p' },
 #endif
-		{ "text", required_argument, NULL, 't' }
+		{ "text", required_argument, NULL, 't' },
+		{ NULL, 0, NULL, 0 }
 	};
 #endif
 	int opt;

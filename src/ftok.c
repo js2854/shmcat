@@ -112,7 +112,8 @@ int main(int argc, char **argv)
 		{ "decimal", no_argument, NULL, 'd' },
 		{ "help", no_argument, NULL, 'h' },
 		{ "octal", no_argument, NULL, 'o' },
-		{ "version", no_argument, NULL, 'V' }
+		{ "version", no_argument, NULL, 'V' },
+		{ NULL, 0, NULL, 0 }
 	};
 #endif
 	int opt;
