@@ -1,4 +1,8 @@
-This is shmcat 1.6
+This is shmcat 1.7
+
+shmcat-1.7 (2014-08-04)
+	fixed command line parsing with getopt_long and abbreviated long options
+	made building from git work under FreeBSD 10 (older versions still fail)
 
 shmcat-1.6 (2012-11-26)
 	fixed ftok printing the wrong keys with IDs > 127

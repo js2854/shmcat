@@ -1,14 +1,14 @@
 # German translations for shmcat package.
-# Copyright (C) 2012 Stefan Gast
+# Copyright (C) 2012, 2014 Stefan Gast
 # This file is distributed under the same license as the shmcat package.
-# Stefan Gast, 2012
+# Stefan Gast, 2012, 2014
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: shmcat 1.6\n"
+"Project-Id-Version: shmcat 1.7\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2012-11-26 14:19+0100\n"
-"PO-Revision-Date: 2012-11-26 14:20+0100\n"
+"POT-Creation-Date: 2014-08-04 10:38+0200\n"
+"PO-Revision-Date: 2014-08-04 10:44+0100\n"
 "Last-Translator: Stefan Gast\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -121,8 +121,8 @@ msgstr ""
 "Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
 
 #: src/shmcat.c:110 src/ftok.c:86
-msgid "Copyright (C) 2012 by Stefan Gast"
-msgstr "Copyright © 2012 by Stefan Gast"
+msgid "Copyright (C) 2012, 2014 by Stefan Gast"
+msgstr "Copyright © 2012, 2014 by Stefan Gast"
 
 #: src/shmcat.c:111 src/ftok.c:87
 msgid ""
@@ -147,17 +147,17 @@ msgstr ""
 "Melden Sie Fehler im Programm oder der deutschen Übersetzung\n"
 "an: %s\n"
 
-#: src/shmcat.c:183 src/shmcat.c:190 src/ftok.c:101
+#: src/shmcat.c:184 src/shmcat.c:191 src/ftok.c:101
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr "%s: Falsche Verwendung, mehr Informationen mit „%s -h“.\n"
 
-#: src/shmcat.c:230 src/ftok.c:173
+#: src/shmcat.c:231 src/ftok.c:174
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr "%s: BUG: Nicht behandelte Kommandozeilen-Option: %c\n"
 
-#: src/shmcat.c:255
+#: src/shmcat.c:256
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
@@ -303,18 +303,18 @@ msgstr ""
 msgid "%s, part of %s\n"
 msgstr "%s, Teil von %s\n"
 
-#: src/ftok.c:195
+#: src/ftok.c:196
 #, c-format
 msgid "%s: The ID has to be a number between 0 and 255!\n"
 msgstr "%s: Die ID muss eine Zahl zwischen 0 und 255 sein!\n"
 
-#: src/ftok.c:203
+#: src/ftok.c:204
 #, c-format
 msgid "%s: Cannot calculate a key for the given parameters: %s\n"
 msgstr ""
 "%s: Kann keinen Schlüssel für die angegebenen Parameter berechnen: %s\n"
 
-#: src/ftok.c:228
+#: src/ftok.c:229
 #, c-format
 msgid "%s: Cannot print to standard output: %s\n"
 msgstr "%s: Fehler beim Schreiben auf die Standardausgabe: %s\n"

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: shmcat 1.6\n"
+"Project-Id-Version: shmcat 1.7\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2012-11-26 14:19+0100\n"
+"POT-Creation-Date: 2014-08-04 10:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgid "If no operand is given, read standard input."
 msgstr ""
 
 #: src/shmcat.c:110 src/ftok.c:86
-msgid "Copyright (C) 2012 by Stefan Gast"
+msgid "Copyright (C) 2012, 2014 by Stefan Gast"
 msgstr ""
 
 #: src/shmcat.c:111 src/ftok.c:87
@@ -114,17 +114,17 @@ msgstr ""
 msgid "Report bugs to: %s\n"
 msgstr ""
 
-#: src/shmcat.c:183 src/shmcat.c:190 src/ftok.c:101
+#: src/shmcat.c:184 src/shmcat.c:191 src/ftok.c:101
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr ""
 
-#: src/shmcat.c:230 src/ftok.c:173
+#: src/shmcat.c:231 src/ftok.c:174
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr ""
 
-#: src/shmcat.c:255
+#: src/shmcat.c:256
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
@@ -247,17 +247,17 @@ msgstr ""
 msgid "%s, part of %s\n"
 msgstr ""
 
-#: src/ftok.c:195
+#: src/ftok.c:196
 #, c-format
 msgid "%s: The ID has to be a number between 0 and 255!\n"
 msgstr ""
 
-#: src/ftok.c:203
+#: src/ftok.c:204
 #, c-format
 msgid "%s: Cannot calculate a key for the given parameters: %s\n"
 msgstr ""
 
-#: src/ftok.c:228
+#: src/ftok.c:229
 #, c-format
 msgid "%s: Cannot print to standard output: %s\n"
 msgstr ""
