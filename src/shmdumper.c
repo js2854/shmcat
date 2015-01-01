@@ -1,6 +1,6 @@
 /*
  * shmcat: Dump Shared Memory Segments and more
- * (C) 2012 by Stefan Gast
+ * (C) 2012, 2015 by Stefan Gast
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -137,7 +137,7 @@ ShmcatStatus dumpShmKey(const char *keystr, const char *programName)
 	key_signed = strtoimax(keystr, &numEnd, 0);
 	if(*numEnd != '\0' || key_signed < KEY_T_MIN || key_signed > KEY_T_MAX || errno != 0)
 	{
-		/* Failed? Then try unsigned, but ensure it is not to large for the unsigned key type */
+		/* Failed? Then try unsigned, but ensure it is not too large for the unsigned key type */
 		errno = 0;
 		key_unsigned = strtoumax(keystr, &numEnd, 0);
 		if(*numEnd != '\0' || key_unsigned > KEY_T_UNSIGNED_MAX || errno != 0)
