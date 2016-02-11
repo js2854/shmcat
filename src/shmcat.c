@@ -153,7 +153,7 @@ int main(int argc, char **argv)
 	bindtextdomain(PACKAGE, LOCALEDIR);
 	textdomain(PACKAGE);
 
-	/* Do a first run of gettext/gettext_long to check the commandline for
+	/* Do a first run of getopt/getopt_long to check the command line for
 	 * validity and to handle help or version info options. */
 	opterr = 0;
 	optind = 1;
