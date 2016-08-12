@@ -1,4 +1,4 @@
-.TH SHMCAT "1" "November 2012" "shmcat(1)"
+.TH SHMCAT "1" "August 2016" "shmcat(1)"
 .SH NAME
 shmcat \- Shared-Memory-Segmente, Dateien, Standardeingabe und/oder Text ausgeben
 .SH \(:UBERSICHT
@@ -13,7 +13,8 @@ Standardausgabe ausgeben. Wenn kein OPERAND angegeben wurde, wird nur
 die Standardeingabe gelesen. Falls mehrere OPERANDen \(:ubergeben wurden, so
 werden diese in der angegebenen Reihenfolge verarbeitet. Wenn einige der
 OPERANDen nicht gelesen werden k\(:onnen, dann wird eine Fehlermeldung auf die
-Standardfehlerausgabe geschrieben und mit den anderen OPERANDen fortgefahren.
+Standardfehlerausgabe geschrieben und mit den anderen OPERANDen fortgefahren,
+sofern die Option \fB-S\fR oder \fB--stop\fR nicht angegeben wurde.
 .PP
 Die meisten modernen Systeme unterst\(:utzen zwei APIs f\(:ur Shared-Memory:
 .PP
@@ -38,6 +39,12 @@ ben\(:otigt, so gilt das auch f\(:ur die kurzen Varianten.
 \fB-h\fR, \fB-?\fR, \fB--help\fR
 Informationen zur Verwendung des Programms anzeigen und ohne weitere
 Ausgaben beenden.
+.TP
+\fB-S\fR, \fB--stop\fR
+Wenn ein OPERAND nicht gelesen werden kann, versucht shmcat normalerweise,
+mit den verbliebenen OPERANDen fortzufahren. Diese Option schaltet dieses
+Verhalten ab, sodass sich das Programm sofort beendet, sobald ein OPERAND
+nicht gelesen werden kann.
 .TP
 \fB-V\fR, \fB--version\fR
 Versionsinformationen anzeigen und ohne weitere Aktionen beenden.
@@ -78,7 +85,10 @@ Den angegebenen Text ausgeben.
 Kein Fehler, jeder gew\(:unschte OPERAND wurde ausgegeben
 .TP
 1
-Es gab einen Fehler bei der Ausgabe von mindestens einem OPERANDen, aber das Programm konnte mit den anderen OPERANDen (falls angegeben) fortfahren
+Es gab einen Fehler beim \(:Offnen oder beim Lesen von mindestens einem
+OPERANDen. Wenn shmcat mit der Option \fB-S\fR oder \fB--stop\fR aufgerufen
+wurde, dann hat sich das Programm nach diesem Fehler beendet, ansonsten hat
+es versucht, mit den weiteren OPERANDen (falls angegeben) fortzufahren
 .TP
 2
 Es gab einen schwerwiegenden Fehler. Normalerweise bedeutet das, dass shmcat nicht auf die Standardausgabe schreiben konnte

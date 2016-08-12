@@ -1,4 +1,4 @@
-.TH SHMCAT "1" "November 2012" "shmcat(1)"
+.TH SHMCAT "1" "August 2016" "shmcat(1)"
 .SH NAME
 shmcat \- dump shared memory segments, files, standard input and/or text
 .SH SYNOPSIS
@@ -12,7 +12,8 @@ Dump shared memory segments, files, standard input and/or text to standard
 output. If no OPERAND is given, read standard input only. If more
 than one OPERAND is given, dump them in order. If some of the OPERANDs
 cannot be read, shmcat prints an error message to standard error and tries
-to continue with the other OPERANDs.
+to continue with the other OPERANDs, unless the \fB-S\fR or \fB--stop\fR
+option is given.
 .PP
 Most modern systems support two APIs for shared memory:
 .PP
@@ -34,6 +35,11 @@ versions do so, as well.
 .TP
 \fB-h\fR, \fB-?\fR, \fB--help\fR
 Display usage information and quit without dumping anything.
+.TP
+\fB-S\fR, \fB--stop\fR
+By default, if an OPERAND cannot be read, shmcat tries to continue with the
+remaining OPERANDs. This option turns of that behavior, so that the program
+stops immediately after the first OPERAND that cannot be read.
 .TP
 \fB-V\fR, \fB--version\fR
 Show version information and quit without further action.
@@ -72,7 +78,10 @@ Print the given text.
 No errors, every OPERAND requested was dumped
 .TP
 1
-There was an error while dumping at least one OPERAND, but the program continued with the other OPERANDs (if given)
+There was an error while opening or reading at least one OPERAND. If shmcat
+has been invoked with the \fB-S\fR or \fB--stop\fR option, the program stopped
+after this error, otherwise it tried to continue with the remaining OPERANDs
+(if given)
 .TP
 2
 There was a fatal error, usually this means that shmcat could not write to standard output

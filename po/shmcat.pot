@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Stefan Gast
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the shmcat package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shmcat 1.7\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2014-08-04 10:38+0200\n"
+"POT-Creation-Date: 2016-08-12 17:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,25 +32,28 @@ msgstr ""
 msgid "Following OPTIONs are supported:\n"
 msgstr ""
 
-#: src/shmcat.c:56 src/ftok.c:69
+#: src/shmcat.c:56
 msgid ""
 "-h, --help               display this help and exit.\n"
 "-?                       same as -h.\n"
+"-S, --stop               stop immediately if there is an error with an "
+"operand.\n"
 "-V, --version            output version information and exit.\n"
 msgstr ""
 
-#: src/shmcat.c:60 src/ftok.c:76
+#: src/shmcat.c:61
 msgid ""
 "-h             display this help and exit.\n"
 "-?             same as -h.\n"
+"-S             stop immediately if there is an error with an operand.\n"
 "-V             output version information and exit.\n"
 msgstr ""
 
-#: src/shmcat.c:65
+#: src/shmcat.c:67
 msgid "An OPERAND may be one of:\n"
 msgstr ""
 
-#: src/shmcat.c:68
+#: src/shmcat.c:70
 msgid ""
 "-f, --file=filename      dump contents of the given file.\n"
 "-i, --stdin              dump standard input.\n"
@@ -61,17 +64,17 @@ msgid ""
 "-n, --newline            add a line feed."
 msgstr ""
 
-#: src/shmcat.c:76
+#: src/shmcat.c:78
 msgid ""
 "-p, --posix-shm=name     dump the POSIX shared memory segment with the\n"
 "                         given name."
 msgstr ""
 
-#: src/shmcat.c:79
+#: src/shmcat.c:81
 msgid "-t, --text=text          print the given text.\n"
 msgstr ""
 
-#: src/shmcat.c:82
+#: src/shmcat.c:84
 msgid ""
 "-f filename    dump contents of the given file.\n"
 "-i             dump standard input.\n"
@@ -80,24 +83,24 @@ msgid ""
 "-n             add a line feed."
 msgstr ""
 
-#: src/shmcat.c:88
+#: src/shmcat.c:90
 msgid ""
 "-p name        dump the POSIX shared memory segment with the given name."
 msgstr ""
 
-#: src/shmcat.c:90
+#: src/shmcat.c:92
 msgid "-t text        print the given text.\n"
 msgstr ""
 
-#: src/shmcat.c:93
+#: src/shmcat.c:95
 msgid "If no operand is given, read standard input."
 msgstr ""
 
-#: src/shmcat.c:110 src/ftok.c:86
-msgid "Copyright (C) 2012, 2014 by Stefan Gast"
+#: src/shmcat.c:112
+msgid "Copyright (C) 2012, 2014, 2016 by Stefan Gast"
 msgstr ""
 
-#: src/shmcat.c:111 src/ftok.c:87
+#: src/shmcat.c:113 src/ftok.c:87
 msgid ""
 "This is free software.  You may redistribute copies of it under the terms "
 "of\n"
@@ -109,28 +112,27 @@ msgstr ""
 #. for this package.  Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the address for translation
 #. bugs (typically your translation team's web or email address).
-#: src/shmcat.c:119 src/ftok.c:95
+#: src/shmcat.c:121 src/ftok.c:95
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 
-#: src/shmcat.c:184 src/shmcat.c:191 src/ftok.c:101
+#: src/shmcat.c:192 src/shmcat.c:199 src/ftok.c:101
 #, c-format
 msgid "%s: Wrong usage, try \"%s -h\" for more information!\n"
 msgstr ""
 
-#: src/shmcat.c:231 src/ftok.c:174
+#: src/shmcat.c:244 src/ftok.c:174
 #, c-format
 msgid "%s: BUG: Unhandled command line option: %c\n"
 msgstr ""
 
-#: src/shmcat.c:256
+#: src/shmcat.c:269
 #, c-format
 msgid "%s: BUG: One of the program routines returned an invalid value (%i)!\n"
 msgstr ""
 
-#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:58
-#: src/shmdumper.c:72
+#: src/filedumper.c:55 src/printtext.c:42 src/shmdumper.c:58 src/shmdumper.c:72
 #, c-format
 msgid "%s: Error writing to standard output: %s\n"
 msgstr ""
@@ -236,15 +238,33 @@ msgid ""
 "-o, --octal              octal output (instead of hexadecimal).\n"
 msgstr ""
 
+#: src/ftok.c:69
+msgid ""
+"-h, --help               display this help and exit.\n"
+"-?                       same as -h.\n"
+"-V, --version            output version information and exit.\n"
+msgstr ""
+
 #: src/ftok.c:73
 msgid ""
 "-d             decimal output (instead of hexadecimal).\n"
 "-o             octal output (instead of hexadecimal).\n"
 msgstr ""
 
+#: src/ftok.c:76
+msgid ""
+"-h             display this help and exit.\n"
+"-?             same as -h.\n"
+"-V             output version information and exit.\n"
+msgstr ""
+
 #: src/ftok.c:85
 #, c-format
 msgid "%s, part of %s\n"
+msgstr ""
+
+#: src/ftok.c:86
+msgid "Copyright (C) 2012, 2014 by Stefan Gast"
 msgstr ""
 
 #: src/ftok.c:196

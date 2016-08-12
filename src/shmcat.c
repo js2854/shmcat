@@ -1,6 +1,6 @@
 /*
  * shmcat: Dump Shared Memory Segments and more
- * (C) 2012, 2014 by Stefan Gast
+ * (C) 2012, 2014, 2016 by Stefan Gast
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -55,10 +55,12 @@ static void usage(const char *progname)
 #ifdef HAVE_GETOPT_LONG
 	puts(_("-h, --help               display this help and exit.\n"
 	       "-?                       same as -h.\n"
+	       "-S, --stop               stop immediately if there is an error with an operand.\n"
 	       "-V, --version            output version information and exit.\n"));
 #else /* !HAVE_GETOPT_LONG */
 	puts(_("-h             display this help and exit.\n"
 	       "-?             same as -h.\n"
+	       "-S             stop immediately if there is an error with an operand.\n"
 	       "-V             output version information and exit.\n"));
 #endif /* HAVE_GETOPT_LONG */
 
@@ -107,7 +109,7 @@ static void show_version(void)
 #endif /* ENABLE_POSIX_SHM */
 	puts(")");
 
-	puts(_("Copyright (C) 2012, 2014 by Stefan Gast"));
+	puts(_("Copyright (C) 2012, 2014, 2016 by Stefan Gast"));
 	puts(_("This is free software.  You may redistribute copies of it under the terms of\n"
                "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
                "There is NO WARRANTY, to the extent permitted by law.\n"));
@@ -123,14 +125,15 @@ static void show_version(void)
 int main(int argc, char **argv)
 {
 #ifdef ENABLE_POSIX_SHM
-	const char *optstr = "hVf:iM:m:np:t:";
+	const char *optstr = "hSVf:iM:m:np:t:";
 #else
-	const char *optstr = "hVf:iM:m:nt:";
+	const char *optstr = "hSVf:iM:m:nt:";
 #endif
 #if defined HAVE_GETOPT_LONG && defined HAVE_GETOPT_H
 	static const struct option long_options[] =
 	{
 		{ "help", no_argument, NULL, 'h' },
+		{ "stop", no_argument, NULL, 'S' },
 		{ "version", no_argument, NULL, 'V' },
 		{ "file", required_argument, NULL, 'f' },
 		{ "stdin", no_argument, NULL, 'i' },
@@ -145,6 +148,7 @@ int main(int argc, char **argv)
 	};
 #endif
 	int opt;
+	int stop = 0;
 	ShmcatStatus status = SHMCAT_NOTHING_DONE;
 	ShmcatStatus dumperStatus;
 
@@ -168,6 +172,10 @@ int main(int argc, char **argv)
 			case 'h':
 				usage(argv[0]);
 				return EXITCODE_OK;
+
+			case 'S':
+				stop = 1;
+				break;
 
 			case 'V':
 				show_version();
@@ -195,9 +203,11 @@ int main(int argc, char **argv)
 	/* Second getopt run does the actual work */
 	optind = 1;
 #if defined HAVE_GETOPT_LONG && defined HAVE_GETOPT_H
-	while((opt = getopt_long(argc, argv, optstr, long_options, NULL)) != -1 && status != SHMCAT_PANIC)
+	while((opt = getopt_long(argc, argv, optstr, long_options, NULL)) != -1 &&
+			status != SHMCAT_PANIC && !(stop && status == SHMCAT_ERROR))
 #else
-	while((opt = getopt(argc, argv, optstr)) != -1 && status != SHMCAT_PANIC)
+	while((opt = getopt(argc, argv, optstr)) != -1 &&
+			status != SHMCAT_PANIC && !(stop && status == SHMCAT_ERROR))
 #endif
 	{
 		switch(opt)
@@ -224,6 +234,9 @@ int main(int argc, char **argv)
 #endif
 			case 't':
 				dumperStatus = printText(optarg, argv[0]);
+				break;
+			case 'S':
+				/* Handled above in the first loop, no need to do anything here. */
 				break;
 			default:
 				/* Notify the user someting is wrong, but do not handle this
