@@ -82,19 +82,20 @@ Den angegebenen Text ausgeben.
 .SH R\(:UCKGABEWERTE
 .TP
 0
-Kein Fehler, jeder gew\(:unschte OPERAND wurde ausgegeben
+Kein Fehler, jeder gew\(:unschte OPERAND wurde ausgegeben.
 .TP
 1
 Es gab einen Fehler beim \(:Offnen oder beim Lesen von mindestens einem
 OPERANDen. Wenn shmcat mit der Option \fB-S\fR oder \fB--stop\fR aufgerufen
 wurde, dann hat sich das Programm nach diesem Fehler beendet, ansonsten hat
-es versucht, mit den weiteren OPERANDen (falls angegeben) fortzufahren
+es versucht, mit den weiteren OPERANDen (falls angegeben) fortzufahren.
 .TP
 2
-Es gab einen schwerwiegenden Fehler. Normalerweise bedeutet das, dass shmcat nicht auf die Standardausgabe schreiben konnte
+Es gab einen schwerwiegenden Fehler. Normalerweise bedeutet das, dass shmcat
+nicht auf die Standardausgabe schreiben konnte.
 .TP
 10
-Das Programm wurde falsch aufgerufen
+Das Programm wurde falsch aufgerufen.
 .SH ANMERKUNGEN
 Wenn Sie Shared-Memory-Segmente ausgeben m\(:ochten, sollten Sie normalerweise
 die Ausgabe von shmcat in eine Datei oder zu einem Programm wie \fBod(1)\fR

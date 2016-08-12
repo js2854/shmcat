@@ -1,4 +1,4 @@
-.TH FTOK "1" "Oktober 2012" "ftok(1)"
+.TH FTOK "1" "August 2016" "ftok(1)"
 .SH NAME
 ftok \- System V Interprozesskommunikationsschl\(:ussel durch die Bibliotheksfunktion \fBftok(3)\fR berechnen
 .SH \(:UBERSICHT
@@ -43,13 +43,13 @@ Versionsinformationen anzeigen und beenden.
 .SH R\(:UCKGABEWERTE
 .TP
 0
-Kein Fehler, der Schl\(:ussel konnte berechnet und ausgegeben werden
+Kein Fehler, der Schl\(:ussel konnte berechnet und ausgegeben werden.
 .TP
 1
-Beim Berechnen oder Ausgeben des Schl\(:ussels ist ein Fehler aufgetreten
+Beim Berechnen oder Ausgeben des Schl\(:ussels ist ein Fehler aufgetreten.
 .TP
 10
-Das Programm wurde falsch aufgerufen
+Das Programm wurde falsch aufgerufen.
 .SH PROBLEME
 Das Kommando \fBftok(1)\fR hat die gleichen Beschr\(:ankungen wie die
 Bibliotheksfunktion \fBftok(3)\fR. Das bedeutet, dass es keine Garantie daf\(:ur
