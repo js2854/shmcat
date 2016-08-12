@@ -1,4 +1,7 @@
-This is shmcat 1.7
+This is shmcat 1.8
+
+shmcat-1.8 (2016-08-12)
+	added a command line option to stop on first failed operand
 
 shmcat-1.7 (2014-08-04)
 	fixed command line parsing with getopt_long and abbreviated long options

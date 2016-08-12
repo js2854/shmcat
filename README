@@ -1,5 +1,5 @@
 shmcat - a tool to dump shared memory segments, files and text
-(C) 2012, 2014 by Stefan Gast
+(C) 2012, 2014, 2016 by Stefan Gast
 
 This is free software.  You may redistribute copies of it under the terms of
 the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
