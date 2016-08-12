@@ -40,7 +40,7 @@ then
 	exit 1
 fi
 
-autopoint || exit 1
+autopoint --force || exit 1
 aclocal -I m4 || exit 1
 autoheader || exit 1
 automake --add-missing --copy || exit 1
