@@ -28,6 +28,8 @@ intl
 po/*
 m4/*
 
+compile
+
 man/Makefile
 man/Makefile.in
 
