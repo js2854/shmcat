@@ -2,8 +2,8 @@
 *~
 *.o
 .*
-shmcat*.tar.bz2
 shmcat*.tar.gz
+shmcat*.tar.xz
 
 ABOUT-NLS
 aclocal.m4

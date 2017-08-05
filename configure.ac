@@ -23,7 +23,7 @@ AC_INIT(shmcat, 1.8, sgdev at arcor dot de)
 AM_CONFIG_HEADER(config.h)
 AC_LANG(C)
 
-AM_INIT_AUTOMAKE([dist-bzip2 1.11])
+AM_INIT_AUTOMAKE([dist-xz 1.11])
 AM_SILENT_RULES([yes])
 
 AM_SANITY_CHECK
