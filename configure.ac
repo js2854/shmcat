@@ -1,5 +1,5 @@
 # shmcat: Dump Shared Memory Segments and more
-# (C) 2012, 2014, 2016 by Stefan Gast
+# (C) 2012, 2014, 2016, 2017 by Stefan Gast
 
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -111,4 +111,5 @@ AM_GNU_GETTEXT_VERSION(0.18.3)
 dnl Define USE_NLS conditional to determine if we have to install translated man pages.
 AM_CONDITIONAL(USE_NLS, [test "x$USE_NLS" = "xyes"])
 
-AC_OUTPUT(Makefile intl/Makefile man/Makefile man/de/Makefile po/Makefile.in src/Makefile)
+AC_CONFIG_FILES([Makefile intl/Makefile man/Makefile man/de/Makefile po/Makefile.in src/Makefile])
+AC_OUTPUT
