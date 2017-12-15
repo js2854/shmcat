@@ -236,7 +236,7 @@ int main(int argc, char **argv)
 				dumperStatus = printText(optarg, argv[0]);
 				break;
 			case 'S':
-				/* Handled above in the first loop, no need to do anything here. */
+				dumperStatus = SHMCAT_NOTHING_DONE;
 				break;
 			default:
 				/* Notify the user someting is wrong, but do not handle this
