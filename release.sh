@@ -45,6 +45,6 @@ then
 fi
 
 # pack release
-make dist-bzip2	|| terminate 1
+make dist-xz || terminate 1
 
 terminate 0
