@@ -1,4 +1,8 @@
-This is shmcat 1.8
+This is shmcat 1.9
+
+shmcat-1.9 (2017-12-16)
+	made -s,--stop work if immediately following operand fails
+	switched from tar.bz2 to tar.xz release tarballs
 
 shmcat-1.8 (2016-08-12)
 	added a command line option to stop on first failed operand

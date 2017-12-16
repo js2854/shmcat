@@ -1,14 +1,14 @@
 # German translations for shmcat package.
-# Copyright (C) 2012, 2014, 2016 Stefan Gast
+# Copyright (C) 2012, 2014, 2016, 2017 Stefan Gast
 # This file is distributed under the same license as the shmcat package.
-# Stefan Gast, 2012, 2014, 2016
+# Stefan Gast, 2012, 2014, 2016, 2017
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: shmcat 1.8\n"
+"Project-Id-Version: shmcat 1.9\n"
 "Report-Msgid-Bugs-To: sgdev at arcor dot de\n"
-"POT-Creation-Date: 2016-08-12 18:30+0200\n"
-"PO-Revision-Date: 2016-08-12 18:38+0100\n"
+"POT-Creation-Date: 2017-12-15 22:27+0100\n"
+"PO-Revision-Date: 2017-12-15 22:28+0100\n"
 "Last-Translator: Stefan Gast\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -129,8 +129,8 @@ msgstr ""
 "Wenn kein Operand angegeben wurde, wird von der Standardeingabe gelesen."
 
 #: src/shmcat.c:112
-msgid "Copyright (C) 2012, 2014, 2016 by Stefan Gast"
-msgstr "Copyright © 2012, 2014, 2016 by Stefan Gast"
+msgid "Copyright (C) 2012, 2014, 2016, 2017 by Stefan Gast"
+msgstr "Copyright © 2012, 2014, 2016, 2017 by Stefan Gast"
 
 #: src/shmcat.c:113 src/ftok.c:87
 msgid ""

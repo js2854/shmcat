@@ -1,6 +1,6 @@
 /*
  * shmcat: Dump Shared Memory Segments and more
- * (C) 2012, 2014, 2016 by Stefan Gast
+ * (C) 2012, 2014, 2016, 2017 by Stefan Gast
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -109,7 +109,7 @@ static void show_version(void)
 #endif /* ENABLE_POSIX_SHM */
 	puts(")");
 
-	puts(_("Copyright (C) 2012, 2014, 2016 by Stefan Gast"));
+	puts(_("Copyright (C) 2012, 2014, 2016, 2017 by Stefan Gast"));
 	puts(_("This is free software.  You may redistribute copies of it under the terms of\n"
                "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
                "There is NO WARRANTY, to the extent permitted by law.\n"));
