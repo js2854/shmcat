@@ -38,7 +38,7 @@ Display usage information and quit without dumping anything.
 .TP
 \fB-S\fR, \fB--stop\fR
 By default, if an OPERAND cannot be read, shmcat tries to continue with the
-remaining OPERANDs. This option turns of that behavior, so that the program
+remaining OPERANDs. This option turns off that behavior, so that the program
 stops immediately after the first OPERAND that cannot be read.
 .TP
 \fB-V\fR, \fB--version\fR
